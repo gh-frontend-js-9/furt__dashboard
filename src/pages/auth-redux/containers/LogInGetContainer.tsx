@@ -2,9 +2,7 @@ import '../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosLogInGet } from '../actions/axiosLoginGetThunkActions';
-//import LogInGetContainer from "./LogInContainer";
-
+import {axiosLogInGet} from '../actions/axiosLoginGetThunkActions';
 
 interface IProps {
     axiosLogInGet?: any,
@@ -21,16 +19,17 @@ class LogInGetContainer extends Component <IProps, {}> {
         );
     }
 }
+
 const mapStateToProps = (state: any) => {
     return {
-        logout:state.logout,
+        logout: state.logout,
         authenticated: state.authenticated,
         authenticationError: state.authenticationError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosLogInGet:(url: string) => dispatch( axiosLogInGet(url))
+        axiosLogInGet: (url: string) => dispatch(axiosLogInGet(url))
     };
 };
 

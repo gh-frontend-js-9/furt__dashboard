@@ -8,7 +8,7 @@ export function axiosSignUpPost(url, name, email, password) {
         axios.post(url, {name, email, password})
             .then((response) => {
                 console.log(response);
-                if (response.statusText !== 'OK') {
+                if (response.statusText !== 'Created') {
                     dispatch(logout(true));
                     throw Error(response.statusText);
                 } else {

@@ -5,9 +5,10 @@ import {connect} from 'react-redux'
 import {Button} from "../views/Button";
 import {EmailInput} from "../views/EmailInput";
 import {PasswordInput} from "../views/PasswordInput";
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
 import {axiosResetPass} from "../actions/axiosResetPassPostThunkActions";
 import {ConfirmPassInput} from "../views/ConfirmPassInput";
+import { Redirect } from 'react-router-dom';
 
 interface IState {
     email?: string,
@@ -20,7 +21,9 @@ interface IProps {
     password?: string,
     authenticationError?: boolean,
     axiosResetPass?: any,
-    logout?: boolean
+    logout?: boolean,
+    authenticated?: boolean
+
 }
 
 class ResetPassContainer extends Component <IProps, IState> {
@@ -45,7 +48,7 @@ class ResetPassContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {email, password, confirmationPassword} = this.state;
         event.preventDefault();
-        this.props.axiosResetPass(`${axios.defaults.baseURL}/api/reset_password`, email, password, confirmationPassword);
+        this.props.axiosResetPass(`${axios.defaults.baseURL}/api/users/reset_password`, email, password, confirmationPassword);
     };
 
     render() {
@@ -64,22 +67,20 @@ class ResetPassContainer extends Component <IProps, IState> {
                     <EmailInput name="email"
                                 type="email"
                                 value={email}
-                                onChange={this.handleChange}
-                    />
+                                onChange={this.handleChange}/>
                     <PasswordInput name="password"
                                    value={password}
                                    onChange={this.handleChange}
-                                   type="password"
-                    />
+                                   type="password"/>
                     <ConfirmPassInput name="confirmationPassword"
                                       value={confirmationPassword}
                                       onChange={this.handleChange}
-                                      type="password"
-                    />
+                                      type="password"/>
                     <Button type="submit">OK</Button>
                 </form>
                 <div className='helpers'>
-                    <span>{this.props.authenticationError ? <p>Invalid fields, try again</p> : null}</span>
+                    {this.props.authenticated ? (<Redirect to='/login'/>) : null}
+                    {this.props.authenticationError ? (<p>Invalid fields, try again</p>) : null}
                 </div>
             </div>
 

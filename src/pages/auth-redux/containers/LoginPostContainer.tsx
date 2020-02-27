@@ -2,12 +2,12 @@ import '../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosPostLogIn} from '../actions/axiosLogInThunkActions';
 import {Button} from "../views/Button";
 import {EmailInput} from "../views/EmailInput";
 import {PasswordInput} from "../views/PasswordInput";
-import {NavLink} from "react-router-dom";
-import LoginGetRequestContainer from "./LoginContainer";
+import {NavLink, Redirect} from "react-router-dom";
+import {axiosLogInPost} from '../actions/axiosLoginPostThunkActions';
+import LogInGetContainer from "./LogInGetContainer";
 
 interface IState {
     email?: string,
@@ -19,10 +19,12 @@ interface IProps {
     password?: string,
     isLoading?: boolean,
     authenticationError?: boolean,
-    axiosPostLogIn?: any
+    axiosLogInPost?: any,
+    logout?: boolean,
+    authenticated?: boolean;
 }
 
-class LoginPostContainer extends Component <IProps, IState> {
+class LogInPostContainer extends Component <IProps, IState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,7 +45,7 @@ class LoginPostContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {email, password} = this.state;
         event.preventDefault();
-        this.props.axiosPostLogIn(`${axios.defaults.baseURL}/api/users/login`, email, password);
+        this.props.axiosLogInPost(`${axios.defaults.baseURL}/api/users/login`, email, password);
     };
 
     render() {
@@ -62,20 +64,25 @@ class LoginPostContainer extends Component <IProps, IState> {
                     <EmailInput name="email"
                                 type="email"
                                 value={email}
-                                onChange={this.handleChange}
-                    />
+                                onChange={this.handleChange}/>
                     <PasswordInput name="password"
                                    value={password}
                                    onChange={this.handleChange}
-                                   type="password"
-                    />
+                                   type="password"/>
                     <Button type="submit">Log In</Button>
                 </form>
+                <NavLink className='auth-navigation' to='reset_password'>
+                    Forgot password?
+                </NavLink>
                 <div className='helpers'>
-                    <span className='loading'>{this.props.isLoading ? <p>Loading..</p> : null}</span>
-                    <span>{this.props.authenticationError ? <p>Invalid email or password, try again</p> : null}</span>
+                    <p className='loading'>
+                        {this.props.isLoading ? <>Loading...</> : null}
+                    </p>
+                    <p>
+                        {this.props.authenticationError ? <>Invalid email or password, try again</> : null}
+                    </p>
                 </div>
-                <LoginGetContainer/>
+                <LogInGetContainer/>
             </div>
 
         );
@@ -84,6 +91,7 @@ class LoginPostContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
+        logout: state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,
         authenticationError: state.authenticationError,
@@ -92,11 +100,11 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosPostLogIn: (url: string, email: string, password: string) =>
-            dispatch(axiosPostLogIn(url, email, password))
+        axiosLogInPost: (url: string, email: string, password: string) =>
+            dispatch(axiosLogInPost(url, email, password))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPostContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LogInPostContainer);
 
 

@@ -2,12 +2,12 @@ import '../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosPostSignUp} from '../actions/axiosSignUpThunkActions';
+import {axiosSignUpPost} from '../actions/axiosSignUpPostThunkActions';
 import {Button} from "../views/Button";
 import {EmailInput} from "../views/EmailInput";
 import {PasswordInput} from "../views/PasswordInput";
 import {NameInput} from "../views/NameInput";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 interface IState {
     name?: string,
@@ -21,7 +21,9 @@ interface IProps {
     password?: string,
     isLoading?: boolean,
     authenticationError?: boolean,
-    axiosPostSignUp?: any
+    authenticated?: boolean,
+    axiosSignUpPost?: any,
+    logout?: boolean
 }
 
 class SignUpContainer extends Component <IProps, IState> {
@@ -46,7 +48,7 @@ class SignUpContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {name, email, password} = this.state;
         event.preventDefault();
-        this.props.axiosPostSignUp(`${axios.defaults.baseURL}/api/users/`, name, email, password);
+        this.props.axiosSignUpPost(`${axios.defaults.baseURL}/api/users/`, name, email, password);
     };
 
     render() {
@@ -79,8 +81,11 @@ class SignUpContainer extends Component <IProps, IState> {
                     <Button type="submit">Sign up</Button>
                 </form>
                 <div className='helpers'>
-                    <span className='loading'>{this.props.isLoading ? <p>LoadingвЂ¦</p> : null}</span>
-                    <span>{this.props.authenticationError ? <p>Invalid fields, try again</p> : null}</span>
+                    <span className='loading'>
+                        {this.props.isLoading ? <p>Loading...</p> : null}
+                    </span>
+                    {this.props.authenticated ? (<Redirect to='/login'/>) : null}
+                    {this.props.authenticationError ? <p>Invalid fields, try again</p> : null}
                 </div>
             </div>
 
@@ -91,6 +96,7 @@ class SignUpContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
+        logout:state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,
         authenticationError: state.authenticationError,
@@ -99,8 +105,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosPostSignUp: (url: string, name: string, email: string, password: string) =>
-            dispatch(axiosPostSignUp(url, name, email, password))
+        axiosSignUpPost: (url: string, name: string, email: string, password: string) =>
+            dispatch(axiosSignUpPost(url, name, email, password))
     };
 };
 
