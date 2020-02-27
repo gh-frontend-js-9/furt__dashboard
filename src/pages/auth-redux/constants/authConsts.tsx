@@ -1,0 +1,4 @@
+export const AUTHENTICATED = "AUTHENTICATED";
+export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
+export const IS_LOADING = 'IS_LOADING';
+export const LOGOUT = 'LOGOUT';

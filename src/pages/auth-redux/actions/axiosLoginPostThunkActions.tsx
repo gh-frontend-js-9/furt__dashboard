@@ -1,7 +1,7 @@
 import axios from "axios";
 import {logout, authenticated, authenticationError, isLoading} from "./authActions";
 
-export function axiosLoginPost(url, email, password) {
+export function axiosLogInPost(url, email, password) {
     return (dispatch) => {
         dispatch(isLoading(true));
 
