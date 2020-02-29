@@ -2,6 +2,7 @@ import React from "react"
 import {Line} from "rc-progress";
 
 const CardCreatedProjectComponent = (props: any) => {
+    console.log(props.status)
     return (
         <div className='project-container' key={props._id}>
             <div className='project-container__item'>
@@ -14,7 +15,7 @@ const CardCreatedProjectComponent = (props: any) => {
                 {props.cost}
             </div>
             <div className='project-container__item'>
-                {props.deadline.slice(2, 10)}
+                {props.deadline}
             </div>
             <div className='project-container__item'>
                 {props.progress} %

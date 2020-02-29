@@ -1,35 +1,43 @@
-import '../services/axiosConfig'
+import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosGetAllProjects} from "../actions/axiosGetAllProjectsThunkActions";
-import CardCreatedProject from '../../views/projects/CardCreatedProject'
-
-interface IState {
-    allProject?: any,
-}
+import {axiosGetAllProjects} from "../../actions/projects/axiosGetAllProjectsThunkActions";
+import CardCreatedProjectComponent from '../../views/projects/CardCreatedProject'
+import Loading from "../../views/projects/Loading";
 
 interface IProps {
     axiosGetAllProjects?: any,
-    allProject?: any,
+    allProjects?: any,
     isLoading?: boolean,
     authenticationError?: boolean,
-    axiosLogInPost?: any,
     logout?: boolean,
-    authenticated?: boolean;
+    authenticated?: boolean,
+    title?: object,
+    company?: object,
+    cost?: object,
+    status?: object,
+    deadline?: object,
+    progress?: object,
+    name?: object,
+    position?: object,
+    assigned?: object,
 }
 
-class GetAllProjectsContainer extends Component <IProps, IState> {
+class GetAllProjectsContainer extends Component <IProps, {}> {
     componentDidMount() {
         this.props.axiosGetAllProjects(`${axios.defaults.baseURL}/api/projects/`);
     };
 
-    render()  {
-        const project = this.state.allProject.map((project: any) =>
-            <CardCreatedProject {...project} key={project._id}/>);
+    render() {
         return (
             <>
-                {this.props.isLoading ? <>Loading...</> : project}
+                {this.props.isLoading ? <Loading/> : null}
+                {this.props.allProjects.lenght > 0 ?
+                    this.props.allProjects.map((project: any) =>
+                        <CardCreatedProjectComponent {...project} key={project._id}/>) :
+                    null
+                }
             </>
         )
     }
@@ -37,6 +45,7 @@ class GetAllProjectsContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
+        allProjects: state.allProjects,
         logout: state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,

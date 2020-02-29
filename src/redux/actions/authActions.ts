@@ -1,4 +1,4 @@
-import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING} from '../constants/authConsts'
+import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING} from '../constants/authConst'
 
 export function logout(bool) {
     localStorage.removeItem('token');

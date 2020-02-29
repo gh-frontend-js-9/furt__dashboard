@@ -1,6 +1,6 @@
 import axios from "axios";
 import {logout, authenticated, authenticationError, isLoading} from "../authActions";
-
+import '../../services/axiosConfig'
 export function axiosSignUpPost(url, name, email, password) {
     return (dispatch) => {
         dispatch(isLoading(true));

@@ -1,10 +1,9 @@
 import React from 'react';
-import '../../App.css';
-import {Navigation} from './components/Navigation';
+import {Navigation} from './Navigation';
 import {Header} from "../common/Header";
 import {Sidebar} from "../common/Sidebar";
-import {SortRow} from "./components/Sort";
-import ProjectContainer from './ProjectContainer';
+import {SortRow} from "./Sort";
+import GetAllProjectsContainer from "../../containers/projects/GetAllProjectsContainer";
 
 const ProjectsList: React.FC = () => {
     return (
@@ -15,7 +14,7 @@ const ProjectsList: React.FC = () => {
                 <div className='main__container'>
                     <SortRow/>
                     <Navigation/>
-                    <ProjectContainer/>
+                    <GetAllProjectsContainer/>
                 </div>
             </div>
         </>

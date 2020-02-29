@@ -1,4 +1,4 @@
-import '../services/axiosConfig'
+import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'

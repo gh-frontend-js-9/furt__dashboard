@@ -1,5 +1,5 @@
-import '../services/axiosConfig'
 import React, {Component} from 'react'
+import '../../services/axiosConfig'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";

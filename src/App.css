@@ -49,6 +49,12 @@
     display: flex;
     flex-direction: column;
 }
+.helpers{
+    display: flex;
+    justify-content: center;
+    padding: 0px 0px 30px;
+    color: white;
+}
 
 .sidebar__item {
     padding: 40px 20px;

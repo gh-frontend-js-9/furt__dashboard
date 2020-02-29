@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Modal, {ICustomModalStyle} from '@bdenzer/react-modal';
-import CreateNewProjectContainer from '../project/CreateNewProjectContainer'
+//import CreateNewProjectContainer from '../../containers/projects/'
 
 interface IState {
     isOpen: boolean;
@@ -44,7 +44,7 @@ export class ModalWindow extends React.Component<{}, IState> {
                        shouldShowModal={this.state.isOpen}
                        title="Create project">
 
-                    <CreateNewProjectContainer/>
+                    {/*<CreateNewProjectContainer/>*/}
                 </Modal>
                 <button className={'button button--hovered'} onClick={() => this.openModal()}>
                     Add +

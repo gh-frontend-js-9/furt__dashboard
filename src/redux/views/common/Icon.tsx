@@ -9,7 +9,7 @@ export const Icon = () => {
     ];
     let renderIcon = icons.map((icon: string, n: number) => {
         return <span key={n} className="sidebar__item">
-            <a href="#">
+            <a href="/">
                 <i className={`${icon} fa fa--color fa--hovered fa-2x`} aria-hidden="true"> </i>
             </a>
         </span>

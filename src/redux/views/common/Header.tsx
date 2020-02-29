@@ -1,5 +1,4 @@
 import React from "react";
-import '../../App.css';
 import {ModalWindow} from "./ModalWindow";
 
 export const Header: React.FC = () => {
@@ -11,7 +10,7 @@ export const Header: React.FC = () => {
     ];
     let renderIcon = icons.map((icon: string, n: number) => {
         return <span key={n} className="nav-bar__item">
-                    <a href="#">
+                    <a href="/">
                         <i className={`${icon} fa fa--hovered`}  aria-hidden="true"> </i>
                     </a>
                 </span>
@@ -19,7 +18,7 @@ export const Header: React.FC = () => {
     return (
         <header className='header'>
             <div className='header__logo'>
-                <img alt='Virtus' src={require('../../assets/images/logo.png')}/>
+                <img alt='Virtus' src={require('../../../assets/images/logo.png')}/>
             </div>
 
             <div className='nav-bar header__nav-bar'>
