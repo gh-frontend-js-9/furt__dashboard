@@ -1,13 +1,12 @@
 import {GET_ALL_THREADS_SUCCESS} from "../constants/messagesConst";
 
-export function allThreads(state:any = [], action) {
+export function allThreads(state: any = [], action) {
     switch (action.type) {
         case GET_ALL_THREADS_SUCCESS:
-            return  action.allProjects;
+            return action.allThreads;
 
         default:
             return state;
     }
-
 }
 

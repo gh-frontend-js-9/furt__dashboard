@@ -10,7 +10,7 @@ export const Icon = () => {
         href: '#'
     }, {
         name: 'fa-envelope',
-        href: '/threads?sort=desc'
+        href: '/threads'
     }, {
         name: 'fa-users',
         href: '#'
@@ -18,8 +18,7 @@ export const Icon = () => {
 
     let renderIcon = icons.map((icon: any, n: number) => {
         return <><span className="sidebar__item">
-                        <NavLink key={n}
-                           to={icon.href}>
+                        <NavLink key={n} to={icon.href}>
                             <i key={n}
                                className={`${icon.name} fa fa--color fa--hovered fa-2x`}
                                aria-hidden="true"> </i>

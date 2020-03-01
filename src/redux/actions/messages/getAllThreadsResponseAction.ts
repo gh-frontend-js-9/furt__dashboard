@@ -1,8 +1,8 @@
-import {GET_ALL_PROJECTS_SUCCESS} from "../../constants/projectsConst";
+import {GET_ALL_THREADS_SUCCESS} from "../../constants/messagesConst";
 
 export function getAllThreadsResponse(allThreads) {
     return {
-        type: GET_ALL_PROJECTS_SUCCESS,
+        type: GET_ALL_THREADS_SUCCESS,
         allThreads
     };
 }

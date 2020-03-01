@@ -7,7 +7,8 @@ import LoginPostContainer from "./redux/containers/auth/LoginPostContainer";
 import SignUpContainer from "./redux/containers/auth/SignUpContainer";
 import ResetPassContainer from "./redux/containers/auth/ResetPassContainer";
 import ProjectsList from "./redux/views/projects/ProjectsList";
-import GetAllProjectsContainer from "./redux/containers/projects/GetAllProjectsContainer";
+import MessagesPage from "./redux/views/messages/MessagesPage";
+
 
 const App: React.FC = () => {
     return (
@@ -16,7 +17,7 @@ const App: React.FC = () => {
             <Route exact path='/' component={SignUpContainer}/>
             <Route path='/reset_password' component={ResetPassContainer}/>
             <Route path='/projects/' component={ProjectsList}/>
-            <Route path='/threads?sort=desc' component={GetAllProjectsContainer}/>
+            <Route path='/threads' component={MessagesPage}/>
         </BrowserRouter>
    )};
 

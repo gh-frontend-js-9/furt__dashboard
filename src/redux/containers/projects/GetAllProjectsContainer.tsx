@@ -1,10 +1,11 @@
 import '../../services/axiosConfig'
 import React, {Component} from 'react'
+import '../../../assets/styles/messages/messages.css'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosGetAllProjects} from "../../actions/projects/axiosGetAllProjectsThunkActions";
-import CardCreatedProjectComponent from '../../views/projects/CardCreatedProject'
 import Loading from "../../views/projects/Loading";
+import CardCreatedProject from "../../views/projects/CardCreatedProject";
 
 interface IProps {
     axiosGetAllProjects?: any,
@@ -13,15 +14,6 @@ interface IProps {
     authenticationError?: boolean,
     logout?: boolean,
     authenticated?: boolean,
-    title?: object,
-    company?: object,
-    cost?: object,
-    status?: object,
-    deadline?: object,
-    progress?: object,
-    name?: object,
-    position?: object,
-    assigned?: object,
 }
 
 class GetAllProjectsContainer extends Component <IProps, {}> {
@@ -32,7 +24,7 @@ class GetAllProjectsContainer extends Component <IProps, {}> {
 
     render() {
         let project = this.props.allProjects.map((project:any) =>
-            <CardCreatedProjectComponent {...project} key={project._id}/>);
+            <CardCreatedProject{...project} key={project._id}/>);
 
         return (
             <>
