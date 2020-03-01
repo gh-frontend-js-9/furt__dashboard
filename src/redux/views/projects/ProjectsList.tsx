@@ -4,6 +4,7 @@ import {Header} from "../common/Header";
 import {Sidebar} from "../common/Sidebar";
 import {SortRow} from "./Sort";
 import GetAllProjectsContainer from "../../containers/projects/GetAllProjectsContainer";
+import GetAllThreadsContainer from "../../containers/messages/GetAllThreadsContainer";
 
 const ProjectsList: React.FC = () => {
     return (
@@ -15,6 +16,7 @@ const ProjectsList: React.FC = () => {
                     <SortRow/>
                     <Navigation/>
                     <GetAllProjectsContainer/>
+                    <GetAllThreadsContainer/>
                 </div>
             </div>
         </>

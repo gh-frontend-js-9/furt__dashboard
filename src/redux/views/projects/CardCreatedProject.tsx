@@ -2,7 +2,6 @@ import React from "react"
 import {Line} from "rc-progress";
 
 const CardCreatedProjectComponent = (props: any) => {
-    console.log(props.status)
     return (
         <div className='project-container' key={props._id}>
             <div className='project-container__item'>
@@ -15,7 +14,7 @@ const CardCreatedProjectComponent = (props: any) => {
                 {props.cost}
             </div>
             <div className='project-container__item'>
-                {props.deadline}
+                {props.deadline.slice(2, 10)}
             </div>
             <div className='project-container__item'>
                 {props.progress} %
@@ -42,7 +41,7 @@ const CardCreatedProjectComponent = (props: any) => {
     );
 };
 
-function getProgressColor(props) {
+function getProgressColor(props:any) {
     if (props.progresss === 0) {
         return "#D3D3D3"
     } else if (props.progresss === 100) {

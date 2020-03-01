@@ -79,7 +79,7 @@ class ResetPassContainer extends Component <IProps, IState> {
                     <Button type="submit">OK</Button>
                 </form>
                 <div className='helpers'>
-                    {this.props.authenticated ? (<Redirect to='/login'/>) : null}
+                    {/*{this.props.authenticated ? (<Redirect to='/login'/>) : null}*/}
                     {this.props.authenticationError ? (<p>Invalid fields, try again</p>) : null}
                 </div>
             </div>

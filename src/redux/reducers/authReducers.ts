@@ -1,13 +1,6 @@
 import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING} from '../constants/authConst'
 
-const initialState = {
-    authenticated:  false,
-    authenticationError: false,
-    isLoading: false,
-    logout: false,
-};
-
-export function authenticated(state = initialState, action: any) {
+export function authenticated(state = false, action: any) {
     switch (action.type) {
         case AUTHENTICATED:
             return action.authenticated;
@@ -17,7 +10,7 @@ export function authenticated(state = initialState, action: any) {
     }
 }
 
-export function authenticationError(state = initialState, action: any) {
+export function authenticationError(state = false, action: any) {
     switch (action.type) {
         case AUTHENTICATION_ERROR:
             return action.authenticationError;
@@ -27,7 +20,7 @@ export function authenticationError(state = initialState, action: any) {
     }
 }
 
-export function isLoading(state = initialState, action: any) {
+export function isLoading(state = false, action: any) {
     switch (action.type) {
         case IS_LOADING:
             return action.isLoading;
@@ -37,7 +30,7 @@ export function isLoading(state = initialState, action: any) {
     }
 }
 
-export function logout(state = initialState, action: any) {
+export function logout(state = false, action: any) {
     switch (action.type) {
         case LOGOUT:
             return action.logout;

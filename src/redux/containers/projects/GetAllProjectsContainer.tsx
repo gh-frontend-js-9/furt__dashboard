@@ -27,17 +27,16 @@ interface IProps {
 class GetAllProjectsContainer extends Component <IProps, {}> {
     componentDidMount() {
         this.props.axiosGetAllProjects(`${axios.defaults.baseURL}/api/projects/`);
+
     };
 
     render() {
+        let project = this.props.allProjects.map((project:any) =>
+            <CardCreatedProjectComponent {...project} key={project._id}/>);
+
         return (
             <>
-                {this.props.isLoading ? <Loading/> : null}
-                {this.props.allProjects.lenght > 0 ?
-                    this.props.allProjects.map((project: any) =>
-                        <CardCreatedProjectComponent {...project} key={project._id}/>) :
-                    null
-                }
+                {this.props.isLoading ? <Loading/> : <>{project}</>}
             </>
         )
     }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import '../../services/axiosConfig'
 import {logout, authenticated, authenticationError, isLoading} from "../authActions";
-import {getAllProjectsResponse} from "../../actions/projects/getAllProjectsResponseAction";
+import {getAllProjectsResponse} from "./getAllProjectsResponseAction";
 
 
 export function axiosGetAllProjects(url) {
@@ -16,9 +16,7 @@ export function axiosGetAllProjects(url) {
                     } else {
                         dispatch(isLoading(false));
                         dispatch(authenticated(true));
-                        let allProjects = response.data
-                        console.log(getAllProjectsResponse(allProjects));
-                        dispatch(getAllProjectsResponse(allProjects))
+                        dispatch(getAllProjectsResponse(response.data))
                     }
                 })
                 .catch(() =>
