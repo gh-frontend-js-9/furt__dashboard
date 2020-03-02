@@ -1,8 +1,7 @@
 import axios from "axios";
 import '../../services/axiosConfig'
 import {logout, authenticated, authenticationError, isLoading} from "../authActions";
-import {getAllThreadsResponse} from "./getAllThreadsResponseAction";
-
+import {getAllThreadsResponse} from "./responseSuccessActions";
 
 export function axiosGetAllThreads(url) {
     return (dispatch) => {

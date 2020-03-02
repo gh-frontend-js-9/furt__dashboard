@@ -1,7 +1,7 @@
 import axios from "axios";
 import '../../services/axiosConfig'
 import {logout, authenticated, authenticationError, isLoading} from "../authActions";
-import {getAllMessagesResponse} from "./getAllMessagesResponseAction";
+import {getAllMessagesResponse} from "./responseSuccessActions";
 
 export function axiosGetAllMessages(url) {
     return (dispatch) => {

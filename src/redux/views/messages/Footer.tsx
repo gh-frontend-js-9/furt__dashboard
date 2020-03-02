@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Footer = ()=>{
+export const Footer = (props)=>{
     return(
         <footer className='footer-container'>
             <div className='new-conversation'>

@@ -2,7 +2,9 @@ import React from "react"
 
 const CardCreatAllThreads= (props: any) => {
     return (
-        <div className='threads-card threads-card--hovered' key={props._id}>
+        <div className='threads-card threads-card--hovered'
+             data-thread-id={props._id}
+             key={props._id} >
             <div className='threads-card__block'>
                 <div className='threads-card__name'>
                     <i className= 'threads-card__img fa-user fa-2x fa'> </i>
