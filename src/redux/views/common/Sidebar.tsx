@@ -7,5 +7,5 @@ export const Sidebar: React.FC = () => {
             <Icon/>
         </div>
     )
-}
+};
 

@@ -1,7 +1,7 @@
 import React from "react"
 import {Line} from "rc-progress";
 
-const CardCreatedProject = (props: any) => {
+const CardCreatProject = (props: any) => {
     return (
         <div className='project-container' key={props._id}>
             <div className='project-container__item'>
@@ -51,4 +51,4 @@ function getProgressColor(props:any) {
         return "#2196f3"
     }
 }
-export default CardCreatedProject
+export default CardCreatProject

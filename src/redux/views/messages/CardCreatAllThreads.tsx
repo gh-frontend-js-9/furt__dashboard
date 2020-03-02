@@ -1,6 +1,6 @@
 import React from "react"
 
-const CardCreatedAllThreads= (props: any) => {
+const CardCreatAllThreads= (props: any) => {
     return (
         <div className='threads-card threads-card--hovered' key={props._id}>
             <div className='threads-card__block'>
@@ -12,11 +12,9 @@ const CardCreatedAllThreads= (props: any) => {
                     {props.updated_at.slice(2, 10)}
                 </div>
             </div>
-            <div className='threads-container__message'>
-                {props.message === null ? null : props.message.body}
-            </div>
+
         </div>
     );
 };
 
-export default CardCreatedAllThreads
+export default CardCreatAllThreads

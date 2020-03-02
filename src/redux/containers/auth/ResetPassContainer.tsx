@@ -8,7 +8,7 @@ import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink} from 'react-router-dom';
 import {axiosResetPass} from "../../actions/auth/axiosResetPassPostThunkActions";
 import {ConfirmPassInput} from "../../views/auth/ConfirmPassInput";
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 
 interface IState {
     email?: string,

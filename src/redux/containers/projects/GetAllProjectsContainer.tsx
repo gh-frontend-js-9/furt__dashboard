@@ -5,7 +5,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosGetAllProjects} from "../../actions/projects/axiosGetAllProjectsThunkActions";
 import Loading from "../../views/projects/Loading";
-import CardCreatedProject from "../../views/projects/CardCreatedProject";
+import CardCreatProject from "../../views/projects/CardCreatProject";
 
 interface IProps {
     axiosGetAllProjects?: any,
@@ -24,7 +24,7 @@ class GetAllProjectsContainer extends Component <IProps, {}> {
 
     render() {
         let project = this.props.allProjects.map((project:any) =>
-            <CardCreatedProject{...project} key={project._id}/>);
+            <CardCreatProject{...project} key={project._id}/>);
 
         return (
             <>

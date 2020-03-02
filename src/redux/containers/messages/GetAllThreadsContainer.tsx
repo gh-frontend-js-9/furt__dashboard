@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosGetAllThreads} from "../../actions/messages/axiosGetAllThreadsThunkActions";
-import CardCreatedAllThreads from "../../views/messages/CardCreatedAllThreads";
+import CardCreatAllThreads from "../../views/messages/CardCreatAllThreads";
 import Loading from "../../views/projects/Loading";
 
 interface IProps {
@@ -22,7 +22,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
 
     render() {
         let threads = this.props.allThreads.map((thread: any) =>
-            <CardCreatedAllThreads {...thread} key={thread._id}/>);
+            <CardCreatAllThreads {...thread} key={thread._id}/>);
         return (
             <>
                 {this.props.isLoading ? <Loading/> : <>{threads}</>}

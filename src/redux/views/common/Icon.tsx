@@ -17,13 +17,13 @@ export const Icon = () => {
     }];
 
     let renderIcon = icons.map((icon: any, n: number) => {
-        return <><span className="sidebar__item">
+        return <span key={n} className="sidebar__item">
                         <NavLink key={n} to={icon.href}>
                             <i key={n}
                                className={`${icon.name} fa fa--color fa--hovered fa-2x`}
                                aria-hidden="true"> </i>
                         </NavLink>
-                 </span></>
+                 </span>
     });
 
     return (
