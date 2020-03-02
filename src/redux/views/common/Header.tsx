@@ -1,20 +1,9 @@
 import React from "react";
 import {ModalWindow} from "./ModalWindow";
+import {IconHeader} from "./IconHeader";
 
 export const Header: React.FC = () => {
-    const icons = [
-        ' fa-search fa-lg',
-        ' fa-bell-o fa-lg',
-        ' fa-user fa-3x',
-        ' fa-angle-down',
-    ];
-    let renderIcon = icons.map((icon: string, n: number) => {
-        return <span key={n} className="nav-bar__item">
-                    <a href="/">
-                        <i className={`${icon} fa fa--hovered`}  aria-hidden="true"> </i>
-                    </a>
-                </span>
-    });
+
     return (
         <header className='header'>
             <div className='header__logo'>
@@ -23,7 +12,7 @@ export const Header: React.FC = () => {
 
             <div className='nav-bar header__nav-bar'>
                 <ModalWindow/>
-                {renderIcon}
+                <IconHeader/>
             </div>
         </header>
     );
