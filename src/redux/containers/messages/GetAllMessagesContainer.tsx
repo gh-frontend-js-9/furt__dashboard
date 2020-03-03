@@ -1,6 +1,5 @@
 import '../../services/axiosConfig'
 import React, {Component} from 'react'
-import axios from 'axios'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
 import {axiosGetAllMessages} from "../../actions/messages/axiosGetAllMessagesThunkAction";
@@ -16,10 +15,6 @@ interface IProps {
 }
 
 class GetAllMessagesContainer extends Component <IProps, {}> {
-    componentDidMount() {
-        this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/5e2a0dcf3d10680022d7a6a7?sort=desc`);
-    };
-
     render() {
         let message = this.props.allMessages.map((message: any) =>
             <CardCreatMessages {...message} key={message._id}/>);
@@ -42,10 +37,8 @@ const mapStateToProps = (state: any) => {
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosGetAllMessages: (url: string) => dispatch(axiosGetAllMessages(url))
+        axiosGetAllMessages: (url: string) => dispatch(axiosGetAllMessages(url)),
     };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetAllMessagesContainer);
-
-

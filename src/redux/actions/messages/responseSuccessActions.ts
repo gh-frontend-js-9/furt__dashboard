@@ -1,4 +1,8 @@
-import {GET_ALL_MESSAGES_SUCCESS, GET_ALL_THREADS_SUCCESS, SEND_MESSAGES_SUCCESS} from "../../constants/messagesConst";
+import {
+    GET_ALL_MESSAGES_SUCCESS,
+    GET_ALL_THREADS_SUCCESS,
+    SEND_MESSAGES_SUCCESS, SET_THREAD_ID,
+} from "../../constants/messagesConst";
 
 export function getAllThreadsResponse(allThreads) {
     return {

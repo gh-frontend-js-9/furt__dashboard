@@ -2,7 +2,8 @@ import React from "react"
 
 const CardCreatAllThreads= (props: any) => {
     return (
-        <div className='threads-card threads-card--hovered'
+        <div
+            className='threads-card threads-card--hovered'
              data-thread-id={props._id}
              key={props._id} >
             <div className='threads-card__block'>
@@ -14,9 +15,9 @@ const CardCreatAllThreads= (props: any) => {
                     {props.updated_at.slice(2, 10)}
                 </div>
             </div>
-
         </div>
     );
 };
+export default CardCreatAllThreads;
 
-export default CardCreatAllThreads
+

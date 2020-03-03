@@ -21,6 +21,6 @@ export function axiosGetAllThreads(url) {
             })
             .catch(() =>
                 dispatch(authenticationError(true)))
-
     }
 }
+

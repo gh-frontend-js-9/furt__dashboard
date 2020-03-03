@@ -11,6 +11,6 @@ const rootReducers = combineReducers({
     allProjects,
     allThreads,
     allMessages,
-    message
+    message,
 });
 export default rootReducers;

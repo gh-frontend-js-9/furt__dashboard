@@ -2,12 +2,12 @@ import axios from "axios";
 import { authenticated, authenticationError} from "../authActions";
 import {sendMessagesResponse} from "./responseSuccessActions";
 
-export function axiosSendMessages(url, message) {
+export function axiosSendMessages(url, message, threadId) {
     return (dispatch) => {
 
         axios.post(url, {
             "thread": {
-                "_id": '5e3edabbb22ac7002259e502'
+                "_id": threadId
             },
             "message": {
                 "body": message

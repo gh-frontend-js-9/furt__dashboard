@@ -10,7 +10,7 @@ interface IState {
 }
 
 interface IProps {
-    message?: string,
+    threadId?: string,
     axiosSendMessages?: any,
     authenticationError?: boolean,
     authenticated?: boolean;
@@ -60,6 +60,7 @@ class SendMessagesContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
+        threadId:state.threadId,
         message: state.message,
         authenticationError: state.authenticationError,
         authenticated: state.authenticated
@@ -68,8 +69,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosSendMessages: (url: string, message: string) =>
-            dispatch(axiosSendMessages(url, message))
+        axiosSendMessages: (url: string, message: string, threadId:string) =>
+            dispatch(axiosSendMessages(url, message, threadId))
     };
 };
 

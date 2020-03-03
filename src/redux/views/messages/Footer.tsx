@@ -1,4 +1,5 @@
 import React from 'react';
+import SendMessagesContainer from "../../containers/messages/SendMessagesContainer";
 
 export const Footer = (props)=>{
     return(
