@@ -23,7 +23,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
     };
 
     getAllMessages(threadId) {
-         this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
+        this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
     }
 
     render() {
@@ -34,13 +34,15 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
                 <div className='threads-card__block'>
                     <div className='threads-card__name'>
                         <i className='threads-card__img fa-user fa-2x fa'> </i>
-                        <span>{thread.users[0].name}</span>
+                        {thread.users.length === 2 && thread.users[0]._id === localStorage.getItem('myId')
+                            ? <span>{thread.users[1].name}</span>
+                            : <span>{thread.users[0].name}</span>}
                     </div>
                     <div className='threads-card__updated-at'>
                         {thread.updated_at.slice(2, 10)}
                     </div>
                 </div>
-            </div>)
+            </div>);
         return (
             <>
                 {this.props.isLoading ? <Loading/> : <>{threads}</>}

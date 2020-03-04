@@ -39,6 +39,7 @@
     overflow-x: hidden;
 }
 
+
 @media (max-width: 390px) {
     .messages-container__threads {
         display: none;

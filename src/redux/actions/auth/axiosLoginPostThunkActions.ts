@@ -7,7 +7,9 @@ export function axiosLogInPost(url, email, password) {
 
         axios.post(url, {email, password})
             .then((response) => {
-                console.log(response);
+                let myId = (response.data._id);
+                localStorage.setItem('myId', myId);
+
                 if (response.statusText !== 'OK') {
                     dispatch(logout(true));
                     throw Error(response.statusText);

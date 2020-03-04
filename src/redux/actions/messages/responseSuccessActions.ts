@@ -1,4 +1,5 @@
 import {
+    CREATE_THREAD__SUCCESS,
     GET_ALL_MESSAGES_SUCCESS,
     GET_ALL_THREADS_SUCCESS, GET_ALL_USERS_SUCCESS,
     SEND_MESSAGES_SUCCESS,
@@ -27,5 +28,12 @@ export function getAllUsersResponse(allUsers) {
     return {
         type: GET_ALL_USERS_SUCCESS,
         allUsers
+    };
+}
+
+export function createThreadResponse(createThread) {
+    return {
+        type: CREATE_THREAD__SUCCESS,
+        createThread
     };
 }
