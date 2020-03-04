@@ -2,11 +2,9 @@ import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
-import {axiosGetAllMessages} from "../../actions/messages/axiosGetAllMessagesThunkAction";
 import CardCreatMessages from "../../views/messages/CardCreatMessages";
 
 interface IProps {
-    axiosGetAllMessages?: any,
     allMessages?: any,
     isLoading?: boolean,
     authenticationError?: boolean,
@@ -35,10 +33,5 @@ const mapStateToProps = (state: any) => {
         authenticationError: state.authenticationError,
     };
 };
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        axiosGetAllMessages: (url: string) => dispatch(axiosGetAllMessages(url)),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetAllMessagesContainer);
+export default connect(mapStateToProps, null)(GetAllMessagesContainer);

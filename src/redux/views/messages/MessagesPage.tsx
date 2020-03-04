@@ -4,7 +4,6 @@ import {Sidebar} from "../common/Sidebar";
 import {SortRow} from "../projects/Sort";
 import GetAllThreadsContainer from "../../containers/messages/GetAllThreadsContainer";
 import {Footer} from "./Footer";
-import SendMessagesContainer from "../../containers/messages/SendMessagesContainer";
 import GetAllMessagesContainer from "../../containers/messages/GetAllMessagesContainer";
 
 const MessagesPage: React.FC = () => {
@@ -22,7 +21,6 @@ const MessagesPage: React.FC = () => {
                         </div>
                         <div className=' messages-container__messages'>
                             <GetAllMessagesContainer/>
-                            <SendMessagesContainer/>
                         </div>
                     </div>
                     <div className='messages-container__user-info'>
@@ -30,6 +28,7 @@ const MessagesPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+
             <Footer/>
         </>
     )

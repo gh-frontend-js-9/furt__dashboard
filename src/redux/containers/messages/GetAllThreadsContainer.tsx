@@ -3,21 +3,18 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {axiosGetAllThreads} from "../../actions/messages/axiosGetAllThreadsThunkActions";
-//import CardCreatAllThreads from "../../views/messages/CardCreatAllThreads";
 import Loading from "../../views/projects/Loading";
 import {axiosGetAllMessages} from '../../actions/messages/axiosGetAllMessagesThunkAction'
-import CardCreatMessages from "../../views/messages/CardCreatMessages";
-import GetAllMessagesContainer from "./GetAllMessagesContainer";
 
 interface IProps {
     allMessages?: any,
-    axiosGetAllThreads?: any,
     allThreads?: any,
-    isLoading?: boolean,
+    axiosGetAllThreads?: any,
+    axiosGetAllMessages?: any,
     authenticationError?: boolean,
+    isLoading?: boolean,
     logout?: boolean,
     authenticated?: boolean,
-    axiosGetAllMessages?: any
 }
 
 class GetAllThreadsContainer extends Component <IProps, {}> {

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Modal, {ICustomModalStyle} from '@bdenzer/react-modal';
-import {Button} from "./Button";
 
 interface IState {
     isOpen: boolean;
 }
 
-export class ModalWindow extends React.Component<{}, IState> {
+export class ModalWindowNewConvers extends React.Component<{}, IState> {
     constructor(props: {}) {
         super(props);
         this.state = {
@@ -44,12 +43,13 @@ export class ModalWindow extends React.Component<{}, IState> {
                 <Modal closeModal={() => this.closeModal()}
                        customStyle={modalStyle}
                        shouldShowModal={this.state.isOpen}
-                       title="Create project">
+                       title="New conversation">
                     {children}
                 </Modal>
-                <Button onClick={() => this.openModal()}>
-                    Add +
-                </Button>
+                <button onClick={() => this.openModal()}
+                        className='new-conversation__button new-conversation__button--hovered' >
+                        + New conversation
+                </button>
             </div>
         );
     }

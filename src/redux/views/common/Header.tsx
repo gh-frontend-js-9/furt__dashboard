@@ -1,6 +1,7 @@
 import React from "react";
 import {ModalWindow} from "./ModalWindow";
 import {IconHeader} from "./IconHeader";
+import CreateNewProjectContainer from "../projects/CreateNewProjectContainer";
 
 export const Header: React.FC = () => {
 
@@ -11,7 +12,9 @@ export const Header: React.FC = () => {
             </div>
 
             <div className='nav-bar header__nav-bar'>
-                <ModalWindow/>
+                <ModalWindow>
+                    <CreateNewProjectContainer/>
+                </ModalWindow>
                 <IconHeader/>
             </div>
         </header>
