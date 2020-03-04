@@ -44,12 +44,12 @@ class SendMessagesContainer extends Component <IProps, IState> {
         return (
             <div className="form-container">
                 <form className="send-message__form"
-                      name='message__form'
+                       name='message__form'
                       onSubmit={this.handleSubmit}
                       method='POST'>
 
                     <textarea className='send-message__textarea'
-                              name="input"
+                               name="textarea"
                               placeholder='Write a message'
                               value={message}
                               onChange={this.handleChange}/>

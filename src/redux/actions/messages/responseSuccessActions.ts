@@ -4,6 +4,7 @@ import {
     GET_ALL_THREADS_SUCCESS, GET_ALL_USERS_SUCCESS,
     SEND_MESSAGES_SUCCESS,
 } from "../../constants/messagesConst";
+import {GET_USER_BY_ID__SUCCESS} from "../../constants/authConst";
 
 export function getAllThreadsResponse(allThreads) {
     return {
@@ -37,5 +38,12 @@ export function createThreadResponse(createThread) {
     return {
         type: CREATE_THREAD__SUCCESS,
         createThread
+    };
+}
+
+export function getUserByIdResponse(userInfoById) {
+    return {
+        type: GET_USER_BY_ID__SUCCESS,
+        userInfoById
     };
 }

@@ -5,10 +5,11 @@ import {connect} from 'react-redux'
 import {axiosGetAllThreads} from "../../actions/messages/axiosGetAllThreadsThunkActions";
 import Loading from "../../views/projects/Loading";
 import {axiosGetAllMessages} from '../../actions/messages/axiosGetAllMessagesThunkAction'
+import {axiosGetUserBId} from "../../actions/messages/axiosGetUserByIdThunkAction";
 
 interface IProps {
-    allMessages?: any,
     allThreads?: any,
+    axiosGetUserBId?: any,
     axiosGetAllThreads?: any,
     axiosGetAllMessages?: any,
     authenticationError?: boolean,
@@ -22,15 +23,16 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
         this.props.axiosGetAllThreads(`${axios.defaults.baseURL}/api/threads`);
     };
 
-    getAllMessages(threadId) {
+    getAllMessages(threadId, userId) {
         this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
         localStorage.setItem('threadId', threadId);
+         this.props.axiosGetUserBId(`${axios.defaults.baseURL}/api/users/${userId}`)
     }
 
     render() {
         let threads = this.props.allThreads.map((thread: any) =>
             <div className='threads-card threads-card--hovered'
-                 onClick={() => this.getAllMessages(thread._id)}
+                 onClick={() => this.getAllMessages(thread._id, thread.users[1]._id)}
                  key={thread._id}>
                 <div className='threads-card__block'>
                     <div className='threads-card__name'>
@@ -44,6 +46,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
                     </div>
                 </div>
             </div>);
+
         return (
             <>
                 {this.props.isLoading ? <Loading/> : <>{threads}</>}
@@ -54,7 +57,6 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
 
 const mapStateToProps = (state: any) => {
     return {
-        allMessages: state.allMessages,
         allThreads: state.allThreads,
         logout: state.logout,
         isLoading: state.isLoading,
@@ -66,6 +68,7 @@ const mapDispatchToProps = (dispatch: any) => {
     return {
         axiosGetAllThreads: (url: string) => dispatch(axiosGetAllThreads(url)),
         axiosGetAllMessages: (url: string) => dispatch(axiosGetAllMessages(url)),
+        axiosGetUserBId: (url: string) => dispatch(axiosGetUserBId(url)),
     };
 };
 

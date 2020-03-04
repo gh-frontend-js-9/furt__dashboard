@@ -2,6 +2,7 @@ import {
     CREATE_THREAD__SUCCESS,
     GET_ALL_MESSAGES_SUCCESS, GET_ALL_THREADS_SUCCESS, GET_ALL_USERS_SUCCESS, SEND_MESSAGES_SUCCESS,
 } from "../constants/messagesConst";
+import {GET_USER_BY_ID__SUCCESS} from "../constants/authConst";
 
 export function allThreads(state: any = [], action) {
     switch (action.type) {
@@ -51,5 +52,14 @@ export function createThread(state:any = [], action) {
     }
 }
 
+export function userInfoById(state:any = [], action) {
+    switch (action.type) {
+        case GET_USER_BY_ID__SUCCESS:
+            return  action.userInfoById;
+
+        default:
+            return state;
+    }
+}
 
 

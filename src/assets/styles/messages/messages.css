@@ -161,7 +161,9 @@
 
 /*///////messages-container__user-info/////////*/
 .messages-container__user-info{
-
+    font-size: 16px;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
 }
 
 /*/////////footer/////////////*/
@@ -171,7 +173,7 @@
 }
 
 .new-conversation__button {
-    margin: 20px;
+    margin: 20px 120px 20px 120px;
     font-size: 18px;
     color: #ffffff;
     font-family: "Montserrat", sans-serif;
