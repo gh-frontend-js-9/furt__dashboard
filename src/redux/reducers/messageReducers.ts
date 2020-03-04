@@ -22,10 +22,10 @@ export function allMessages(state:any = [], action) {
             return state;
     }
 }
-export function message(state:any = [], action) {
+export function sendMessage(state:any = [], action) {
     switch (action.type) {
         case SEND_MESSAGES_SUCCESS:
-            return  action.message;
+            return  action.sendMessage;
 
         default:
             return state;

@@ -11,6 +11,7 @@ export function getAllThreadsResponse(allThreads) {
         allThreads
     };
 }
+
 export function getAllMessagesResponse(allMessages) {
     return {
         type: GET_ALL_MESSAGES_SUCCESS,
@@ -18,12 +19,13 @@ export function getAllMessagesResponse(allMessages) {
     };
 }
 
-export function sendMessagesResponse(message) {
+export function sendMessagesResponse(sendMessage) {
     return {
         type: SEND_MESSAGES_SUCCESS,
-        message
+        sendMessage
     };
 }
+
 export function getAllUsersResponse(allUsers) {
     return {
         type: GET_ALL_USERS_SUCCESS,

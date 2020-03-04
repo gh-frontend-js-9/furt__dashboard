@@ -23,7 +23,7 @@ class GetAllProjectsContainer extends Component <IProps, {}> {
     };
 
     render() {
-        let project = this.props.allProjects.map((project:any) =>
+        let project = this.props.allProjects.map((project: any) =>
             <CardCreatProject{...project} key={project._id}/>);
 
         return (

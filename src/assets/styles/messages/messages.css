@@ -171,14 +171,13 @@
 }
 
 .new-conversation__button {
-    width: 30%;
     margin: 20px;
     font-size: 18px;
     color: #ffffff;
     font-family: "Montserrat", sans-serif;
     background-color: #2196f3;
     border: 0px;
-    padding: 10px 100px;
+    padding: 7px 90px;
     border-radius: 8px;
     text-align: center;
 }

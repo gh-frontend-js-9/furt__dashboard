@@ -24,6 +24,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
 
     getAllMessages(threadId) {
         this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
+        localStorage.setItem('threadId', threadId);
     }
 
     render() {

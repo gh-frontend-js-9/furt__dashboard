@@ -11,7 +11,6 @@ export function axiosCreateThread(url, userId) {
             }
         })
             .then((response) => {
-                console.log(response);
                 if (response.statusText !== 'OK') {
                     throw Error(response.statusText);
                 } else {

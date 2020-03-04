@@ -19,16 +19,17 @@ const MessagesPage: React.FC = () => {
                         <div className='messages-container__threads'>
                             <GetAllThreadsContainer/>
                         </div>
+
                         <div className=' messages-container__messages'>
                             <GetAllMessagesContainer/>
                         </div>
                     </div>
+
                     <div className='messages-container__user-info'>
 
                     </div>
                 </div>
             </div>
-
             <Footer/>
         </>
     )

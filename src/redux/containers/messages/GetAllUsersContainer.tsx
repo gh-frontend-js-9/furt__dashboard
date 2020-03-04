@@ -4,7 +4,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
 import {axiosGetAllUsers} from "../../actions/messages/axiosGetAllUsersThunkAction";
-import {axiosCreateThread} from "../../actions/messages/axiosCreateThread";
+import {axiosCreateThread} from "../../actions/messages/axiosCreateThreadThunkAction";
 
 interface IProps {
     allUsers?: any,

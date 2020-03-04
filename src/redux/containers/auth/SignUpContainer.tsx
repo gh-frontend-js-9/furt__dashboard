@@ -96,7 +96,7 @@ class SignUpContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
-        logout:state.logout,
+        logout: state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,
         authenticationError: state.authenticationError,

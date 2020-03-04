@@ -9,7 +9,6 @@ export function axiosGetAllUsers(url) {
 
         axios.get(url)
             .then((response) => {
-                console.log(response);
                 if (response.statusText !== 'OK') {
                     dispatch(logout(true));
                     throw Error(response.statusText);

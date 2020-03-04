@@ -4,9 +4,10 @@ export function logout(bool) {
     localStorage.removeItem('token');
     return {
         type: LOGOUT,
-        logout:bool
+        logout: bool
     };
 }
+
 export function authenticated(bool) {
     return {
         type: AUTHENTICATED,

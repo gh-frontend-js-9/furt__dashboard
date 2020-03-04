@@ -10,7 +10,7 @@ interface IState {
 }
 
 interface IProps {
-    threadId?: string,
+    message?: string,
     axiosSendMessages?: any,
     authenticationError?: boolean,
     authenticated?: boolean;
@@ -44,13 +44,16 @@ class SendMessagesContainer extends Component <IProps, IState> {
         return (
             <div className="form-container">
                 <form className="send-message__form"
-                      name="form__send-message"
-                      onSubmit={this.handleSubmit}>
+                      name='message__form'
+                      onSubmit={this.handleSubmit}
+                      method='POST'>
+
                     <textarea className='send-message__textarea'
-                              name="send-message__textarea"
+                              name="input"
+                              placeholder='Write a message'
                               value={message}
                               onChange={this.handleChange}/>
-                    <Button type="submit">Send</Button>
+                    <Button type="submit"> Send </Button>
                 </form>
             </div>
 
@@ -60,8 +63,6 @@ class SendMessagesContainer extends Component <IProps, IState> {
 
 const mapStateToProps = (state: any) => {
     return {
-        threadId:state.threadId,
-        message: state.message,
         authenticationError: state.authenticationError,
         authenticated: state.authenticated
     };
@@ -69,8 +70,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosSendMessages: (url: string, message: string, threadId:string) =>
-            dispatch(axiosSendMessages(url, message, threadId))
+        axiosSendMessages: (url: string, message: string) =>
+            dispatch(axiosSendMessages(url, message))
     };
 };
 

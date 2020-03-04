@@ -6,6 +6,7 @@ import {getAllMessagesResponse} from "./responseSuccessActions";
 export function axiosGetAllMessages(url) {
     return (dispatch) => {
         dispatch(isLoading(true));
+
         axios.get(url)
             .then((response) => {
                 if (response.statusText !== 'OK') {
@@ -15,7 +16,6 @@ export function axiosGetAllMessages(url) {
                     dispatch(isLoading(false));
                     dispatch(authenticated(true));
                     dispatch(getAllMessagesResponse(response.data));
-                    console.log(response.data)
                 }
             })
             .catch(() =>
