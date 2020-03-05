@@ -90,6 +90,7 @@
 /*////////messages-container///////*/
 .messages-container {
     display: flex;
+    width: 100%;
 }
 .messages-container__messages {
     width: 50%;
@@ -155,7 +156,7 @@
     border-radius: 10px;
     border: 1px solid rgba(156, 161, 178, 0.3);
     background-color: #404359;
-    width: 85%;
+    width: 75%;
     resize: none;
 }
 
@@ -164,6 +165,26 @@
     font-size: 16px;
     color: #ffffff;
     font-family: "Montserrat", sans-serif;
+    display: flex;
+    width: 15%;
+    justify-content: flex-end;
+    padding-right: 13px;
+
+}
+.card-user-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.card-user-info__photo{
+   padding-bottom: 30px;
+}
+.card-user-info__title {
+    font-size: 16px;
+    color: #9ca1b2;
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 5px 25px;
 }
 
 /*/////////footer/////////////*/
@@ -171,7 +192,6 @@
     padding-left: 30px;
     display: flex;
 }
-
 .new-conversation__button {
     margin: 20px 120px 20px 120px;
     font-size: 18px;

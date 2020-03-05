@@ -2,6 +2,7 @@ import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
+import CardCreatUserInfo from "../../views/messages/CardCreateUserInfo";
 
 interface IProps {
     userInfoById?: any,
@@ -17,7 +18,7 @@ class GetUserByIdContainer extends Component <IProps, {}> {
 
         return (
             <>
-                {this.props.isLoading ? <Loading/> : <><div> {this.props.userInfoById.name} </div></>}
+                {this.props.isLoading ? <Loading/> : <CardCreatUserInfo  userInfo={this.props.userInfoById}/>}
             </>
         )
     }
@@ -25,7 +26,7 @@ class GetUserByIdContainer extends Component <IProps, {}> {
 
 const mapStateToProps = (state: any) => {
     return {
-        userInfoById:state.userInfoById,
+        userInfoById: state.userInfoById,
         logout: state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,

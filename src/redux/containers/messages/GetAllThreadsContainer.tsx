@@ -36,7 +36,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
                  key={thread._id}>
                 <div className='threads-card__block'>
                     <div className='threads-card__name'>
-                        <i className='threads-card__img fa-user fa-2x fa'> </i>
+                        <i className='threads-card__img fa fa-user-secret fa-2x'> </i>
                         {thread.users.length === 2 && thread.users[0]._id === localStorage.getItem('myId')
                             ? <span>{thread.users[1].name}</span>
                             : <span>{thread.users[0].name}</span>}
