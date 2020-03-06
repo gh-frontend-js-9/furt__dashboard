@@ -6,10 +6,11 @@ import {Button} from "../../views/common/Button";
 import {axiosSendMessages} from "../../actions/messages/axiosSendMessageThunkActions";
 
 interface IState {
-    message?: string,
+    message?: any,
 }
 
 interface IProps {
+    sendMessage?: string,
     message?: string,
     axiosSendMessages?: any,
     authenticationError?: boolean,
@@ -20,16 +21,16 @@ class SendMessagesContainer extends Component <IProps, IState> {
     constructor(props) {
         super(props);
         this.state = {
-            message: "",
+            message: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event: any) {
-        const {name, value} = event.target;
+        const {value} = event.target;
         this.setState({
-            [name]: value
+            message: value
         })
     }
 
@@ -40,29 +41,28 @@ class SendMessagesContainer extends Component <IProps, IState> {
     };
 
     render() {
+        console.log(this.props.sendMessage)
         const {message} = this.state;
         return (
-            <div className="form-container">
-                <form className="send-message__form"
-                       name='message__form'
-                      onSubmit={this.handleSubmit}
-                      method='POST'>
-
+                <div className="form-send-mess-container">
+                    <form className="send-message__form"
+                          name='message__form'
+                          onSubmit={this.handleSubmit}>
                     <textarea className='send-message__textarea'
-                               name="textarea"
+                              name="textarea"
                               placeholder='Write a message'
                               value={message}
-                              onChange={this.handleChange}/>
-                    <Button type="submit"> Send </Button>
-                </form>
-            </div>
-
+                              onChange={this.handleChange}> </textarea>
+                        <Button type="submit"> Send </Button>
+                    </form>
+                </div>
         );
     }
 }
 
 const mapStateToProps = (state: any) => {
     return {
+        sendMessage: state.sendMessage,
         authenticationError: state.authenticationError,
         authenticated: state.authenticated
     };
@@ -70,8 +70,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosSendMessages: (url: string, message: string) =>
-            dispatch(axiosSendMessages(url, message))
+        axiosSendMessages: (url: string, message: string) => dispatch(axiosSendMessages(url, message)),
     };
 };
 

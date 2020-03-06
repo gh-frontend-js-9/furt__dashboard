@@ -10,6 +10,7 @@ import GetUserByIdContainer from "../../containers/messages/GetUserByIdContainer
 const MessagesPage: React.FC = () => {
     return (
         <>
+
             <Header/>
             <div className='main'>
                 <Sidebar/>
@@ -27,10 +28,9 @@ const MessagesPage: React.FC = () => {
 
                         <div className='messages-container__user-info'>
                             <GetUserByIdContainer/>
+
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <Footer/>

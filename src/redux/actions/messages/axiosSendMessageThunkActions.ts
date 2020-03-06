@@ -1,9 +1,10 @@
 import axios from "axios";
-import { authenticated, authenticationError} from "../authActions";
+import {authenticated, authenticationError} from "../authActions";
 import {sendMessagesResponse} from "./responseSuccessActions";
 
 export function axiosSendMessages(url, message) {
     return (dispatch) => {
+
         let threadId = localStorage.getItem('threadId');
         axios.post(url, {
             "thread": {

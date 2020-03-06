@@ -18,7 +18,7 @@ class GetUserByIdContainer extends Component <IProps, {}> {
 
         return (
             <>
-                {this.props.isLoading ? <Loading/> : <CardCreatUserInfo  userInfo={this.props.userInfoById}/>}
+                {this.props.isLoading ? <Loading/> : <CardCreatUserInfo userInfo={this.props.userInfoById}/>}
             </>
         )
     }

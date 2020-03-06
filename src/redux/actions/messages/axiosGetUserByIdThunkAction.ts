@@ -16,7 +16,6 @@ export function axiosGetUserBId(url) {
                     dispatch(isLoading(false));
                     dispatch(authenticated(true));
                     dispatch(getUserByIdResponse(response.data));
-                    console.log(response.data)
                 }
             })
             .catch(() =>

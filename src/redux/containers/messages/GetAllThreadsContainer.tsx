@@ -23,16 +23,19 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
         this.props.axiosGetAllThreads(`${axios.defaults.baseURL}/api/threads`);
     };
 
-    getAllMessages(threadId, userId) {
+    getAllMessages(threadId, firstUserId, secondUserId ) {
         this.props.axiosGetAllMessages(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
         localStorage.setItem('threadId', threadId);
-         this.props.axiosGetUserBId(`${axios.defaults.baseURL}/api/users/${userId}`)
+
+        firstUserId === localStorage.getItem('myId')
+            ? this.props.axiosGetUserBId(`${axios.defaults.baseURL}/api/users/${secondUserId}`)
+            : this.props.axiosGetUserBId(`${axios.defaults.baseURL}/api/users/${firstUserId}`)
     }
 
     render() {
         let threads = this.props.allThreads.map((thread: any) =>
             <div className='threads-card threads-card--hovered'
-                 onClick={() => this.getAllMessages(thread._id, thread.users[1]._id)}
+                 onClick={() => this.getAllMessages(thread._id, thread.users[0]._id, thread.users[1]._id)}
                  key={thread._id}>
                 <div className='threads-card__block'>
                     <div className='threads-card__name'>
