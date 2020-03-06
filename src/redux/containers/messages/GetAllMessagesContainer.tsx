@@ -8,14 +8,16 @@ interface IProps {
     sendMessage?: string,
     allMessages?: any,
     isLoading?: boolean,
-    authenticationError?: boolean,
     logout?: boolean,
     authenticated?: boolean,
 }
 
 class GetAllMessagesContainer extends Component <IProps, {}> {
+
     render() {
-        let sendMessage = <CardCreatMessages {...this.props.sendMessage}/>;
+        let sendMessage = this.props.sendMessage.length !== 0
+            ?  <CardCreatMessages {...this.props.sendMessage}/>
+            :null;
 
         let getAllMessage = this.props.allMessages.map((message: any) =>
             <CardCreatMessages {...message} key={message._id}/>);
@@ -34,7 +36,6 @@ const mapStateToProps = (state: any) => {
         logout: state.logout,
         isLoading: state.isLoading,
         authenticated: state.authenticated,
-        authenticationError: state.authenticationError,
     };
 };
 

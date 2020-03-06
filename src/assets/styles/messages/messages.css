@@ -39,7 +39,6 @@
     overflow-x: hidden;
 }
 
-
 @media (max-width: 390px) {
     .messages-container__threads {
         display: none;
@@ -104,8 +103,8 @@
 }
 
 .messages-card {
+    padding: 10px;
     display: flex;
-    flex-direction: row;
     align-items: end;
     justify-content: flex-end;
 }

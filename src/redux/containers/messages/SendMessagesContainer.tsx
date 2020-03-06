@@ -11,10 +11,7 @@ interface IState {
 
 interface IProps {
     sendMessage?: string,
-    message?: string,
     axiosSendMessages?: any,
-    authenticationError?: boolean,
-    authenticated?: boolean;
 }
 
 class SendMessagesContainer extends Component <IProps, IState> {
@@ -35,27 +32,32 @@ class SendMessagesContainer extends Component <IProps, IState> {
     }
 
     handleSubmit(event: any) {
-        const {message} = this.state;
         event.preventDefault();
+
+        const {message} = this.state;
         this.props.axiosSendMessages(`${axios.defaults.baseURL}/api/threads/messages`, message);
+        this.setState({
+            message: ''
+        })
     };
 
     render() {
-        console.log(this.props.sendMessage)
         const {message} = this.state;
         return (
-                <div className="form-send-mess-container">
-                    <form className="send-message__form"
-                          name='message__form'
-                          onSubmit={this.handleSubmit}>
+            <div className="form-send-mess-container">
+                <form className="send-message__form"
+                      name='message__form'
+                      onSubmit={this.handleSubmit}>
                     <textarea className='send-message__textarea'
                               name="textarea"
                               placeholder='Write a message'
                               value={message}
                               onChange={this.handleChange}> </textarea>
-                        <Button type="submit"> Send </Button>
-                    </form>
-                </div>
+                    <Button disabled={!message} type="submit">
+                        Send
+                    </Button>
+                </form>
+            </div>
         );
     }
 }
@@ -63,8 +65,7 @@ class SendMessagesContainer extends Component <IProps, IState> {
 const mapStateToProps = (state: any) => {
     return {
         sendMessage: state.sendMessage,
-        authenticationError: state.authenticationError,
-        authenticated: state.authenticated
+        // authenticated: state.authenticated
     };
 };
 

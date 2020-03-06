@@ -83,7 +83,7 @@ class LogInPostContainer extends Component <IProps, IState> {
                         {this.props.authenticationError ? <>Invalid email or password, try again</> : null}
                     </p>
                 </div>
-                <LogInGetContainer/>
+                {/*<LogInGetContainer/>*/}
             </div>
 
         );
