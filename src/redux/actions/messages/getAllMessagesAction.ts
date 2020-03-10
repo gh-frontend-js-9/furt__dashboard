@@ -2,7 +2,7 @@ import axios from "axios";
 import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 import { getAllMessagesReceiveAction} from "./messagesActionCreators";
 
-export function axiosGetAllMessages(url) {
+export function getAllMessagesAction(url) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 import { getAllThreadsReceiveAction} from "./messagesActionCreators";
 
-export function axiosGetAllThreads(url) {
+export function getAllThreadsAction(url) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 

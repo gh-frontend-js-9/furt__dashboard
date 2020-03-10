@@ -2,7 +2,7 @@ import axios from "axios";
 import { authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
 import {createThreadReceiveAction} from "./messagesActionCreators";
 
-export function axiosCreateThread(url, userId) {
+export function createThreadAction(url, userId) {
     return (dispatch) => {
 
         axios.post(url, {

@@ -2,7 +2,7 @@ import axios from "axios";
 import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 import { getUserByIdReceiveAction} from "./messagesActionCreators";
 
-export function axiosGetUserBId(url) {
+export function getUserByIdAction(url) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 

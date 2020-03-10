@@ -1,5 +1,12 @@
 import {
-    GET_USER_BY_ID__SUCCESS, CREATE_THREAD__SUCCESS, GET_ALL_MESSAGES_SUCCESS, GET_ALL_THREADS_SUCCESS, GET_ALL_USERS_SUCCESS, SEND_MESSAGES_SUCCESS,} from "../../reducers/messageReducers";
+    GET_USER_BY_ID__SUCCESS,
+    CREATE_THREAD__SUCCESS,
+    GET_ALL_MESSAGES_SUCCESS,
+    GET_ALL_THREADS_SUCCESS,
+    GET_ALL_USERS_SUCCESS,
+    SEND_MESSAGES_SUCCESS,
+    GET_THREAD_ID,
+} from "../../reducers/messageReducers";
 
 export function getAllThreadsReceiveAction(allThreads) {
     return {
@@ -40,5 +47,12 @@ export function getUserByIdReceiveAction(userInfoById) {
     return {
         type: GET_USER_BY_ID__SUCCESS,
         payload:userInfoById
+    };
+}
+
+export function getThreadIdAction(threadId) {
+    return {
+        type: GET_THREAD_ID,
+        payload: threadId
     };
 }

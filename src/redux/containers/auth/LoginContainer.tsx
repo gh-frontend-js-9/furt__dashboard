@@ -5,8 +5,8 @@ import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink, Redirect} from "react-router-dom";
-import {axiosLogInPost} from '../../actions/auth/loginPostThunkActions';
-import { getCurrentUserAction} from "../../actions/auth/loginGetThunkActions";
+import {axiosLogInPost} from '../../actions/auth/loginActions';
+import { getCurrentUserAction} from "../../actions/auth/getCurrentUserAction";
 
 interface IState {
     email?: string,

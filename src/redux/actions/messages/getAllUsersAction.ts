@@ -3,7 +3,7 @@ import '../../services/axiosConfig'
 import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 import {getAllUsersReceiveAction} from "./messagesActionCreators";
 
-export function axiosGetAllUsers(url) {
+export function getAllUsersAction(url) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 

@@ -1,11 +1,12 @@
 import axios from "axios";
 import {authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
 import {sendMessagesReceiveAction} from "./messagesActionCreators";
+import store from "../../store/storeConfig";
 
-export function axiosSendMessages(url, message) {
+export function sendMessagesAction(url, message) {
     return (dispatch) => {
 
-        let threadId = localStorage.getItem('threadId');
+        let threadId = store.getState().threadId;
         axios.post(url, {
             "thread": {
                 "_id": threadId

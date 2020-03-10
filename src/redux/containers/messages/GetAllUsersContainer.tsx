@@ -1,26 +1,25 @@
-//import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
-import {axiosGetAllUsers} from "../../actions/messages/getAllUsersAction";
-import {axiosCreateThread} from "../../actions/messages/createThreadAction";
+import {getAllUsersAction} from "../../actions/messages/getAllUsersAction";
+import {createThreadAction} from "../../actions/messages/createThreadAction";
 
 interface IProps {
     allUsers?: any,
     createThread?: any,
-    axiosGetAllUsers?: any,
-    axiosCreateThread?: any,
+    getAllUsersAction?: any,
+    createThreadAction?: any,
     isLoading?: boolean,
 }
 
 class GetAllUsersContainer extends Component <IProps, {}> {
     componentDidMount() {
-        this.props.axiosGetAllUsers(`${axios.defaults.baseURL}/api/users/all`)
+        this.props.getAllUsersAction(`${axios.defaults.baseURL}/api/users/all`)
     }
 
     createThread(userId) {
-        this.props.axiosCreateThread(`${axios.defaults.baseURL}/api/threads`, userId)
+        this.props.createThreadAction(`${axios.defaults.baseURL}/api/threads`, userId)
     }
 
     render() {
@@ -53,8 +52,8 @@ const mapStateToProps = (state: any) => {
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosGetAllUsers: (url: string) => dispatch(axiosGetAllUsers(url)),
-        axiosCreateThread: (url: string, userId: string) => dispatch(axiosCreateThread(url, userId)),
+        getAllUsersAction: (url: string) => dispatch(getAllUsersAction(url)),
+        createThreadAction: (url: string, userId: string) => dispatch(createThreadAction(url, userId)),
     };
 };
 

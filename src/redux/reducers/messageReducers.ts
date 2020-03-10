@@ -4,6 +4,7 @@ export const SEND_MESSAGES_SUCCESS = 'SEND_MESSAGES_SUCCESS';
 export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
 export const CREATE_THREAD__SUCCESS = 'CREATE_THREAD__SUCCESS';
 export const GET_USER_BY_ID__SUCCESS = 'GET_USER_BY_ID__SUCCESS'
+export const GET_THREAD_ID = 'GET_THREAD_ID';
 
 export function allThreads(state: any = [], action) {
     switch (action.type) {
@@ -56,6 +57,15 @@ export function createThread(state:any = [], action) {
 export function userInfoById(state:any = [], action) {
     switch (action.type) {
         case GET_USER_BY_ID__SUCCESS:
+            return  action.payload;
+
+        default:
+            return state;
+    }
+}
+export function threadId(state:any = [], action) {
+    switch (action.type) {
+        case  GET_THREAD_ID:
             return  action.payload;
 
         default:

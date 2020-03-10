@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
-import {axiosSendMessages} from "../../actions/messages/sendMessageActions";
+import {sendMessagesAction} from "../../actions/messages/sendMessageActions";
 
 interface IState {
     message?: any,
@@ -10,7 +10,7 @@ interface IState {
 
 interface IProps {
     sendMessage?: string,
-    axiosSendMessages?: any,
+    sendMessagesAction?: any,
 }
 
 class SendMessagesContainer extends Component <IProps, IState> {
@@ -34,7 +34,7 @@ class SendMessagesContainer extends Component <IProps, IState> {
         event.preventDefault();
 
         const {message} = this.state;
-        this.props.axiosSendMessages(`${axios.defaults.baseURL}/api/threads/messages`, message);
+        this.props.sendMessagesAction(`${axios.defaults.baseURL}/api/threads/messages`, message);
         this.setState({
             message: ''
         })
@@ -69,7 +69,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosSendMessages: (url: string, message: string) => dispatch(axiosSendMessages(url, message)),
+        sendMessagesAction: (url: string, message: string) => dispatch(sendMessagesAction(url, message)),
     };
 };
 
