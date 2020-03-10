@@ -1,21 +1,17 @@
-import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosGetAllThreads} from "../../actions/messages/axiosGetAllThreadsThunkActions";
+import {axiosGetAllThreads} from "../../actions/messages/getAllThreadsActions";
 import Loading from "../../views/projects/Loading";
-import {axiosGetAllMessages} from '../../actions/messages/axiosGetAllMessagesThunkAction'
-import {axiosGetUserBId} from "../../actions/messages/axiosGetUserByIdThunkAction";
+import {axiosGetAllMessages} from '../../actions/messages/getAllMessagesAction'
+import {axiosGetUserBId} from "../../actions/messages/getUserByIdAction";
 
 interface IProps {
     allThreads?: any,
     axiosGetUserBId?: any,
     axiosGetAllThreads?: any,
     axiosGetAllMessages?: any,
-    authenticationError?: boolean,
     isLoading?: boolean,
-    logout?: boolean,
-    authenticated?: boolean,
 }
 
 class GetAllThreadsContainer extends Component <IProps, {}> {
@@ -61,10 +57,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
 const mapStateToProps = (state: any) => {
     return {
         allThreads: state.allThreads,
-        logout: state.logout,
         isLoading: state.isLoading,
-        authenticated: state.authenticated,
-        authenticationError: state.authenticationError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {

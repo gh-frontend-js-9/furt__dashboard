@@ -1,6 +1,6 @@
 import axios from "axios";
-import {authenticated, authenticationError} from "../authActions";
-import {sendMessagesResponse} from "./responseSuccessActions";
+import {authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
+import {sendMessagesReceiveAction} from "./messagesActionCreators";
 
 export function axiosSendMessages(url, message) {
     return (dispatch) => {
@@ -19,11 +19,11 @@ export function axiosSendMessages(url, message) {
                 if (response.statusText !== 'OK') {
                     throw Error(response.statusText);
                 } else {
-                    dispatch(authenticated(true));
-                    dispatch(sendMessagesResponse(response.data));
+                    dispatch(authenticatedAction(true));
+                    dispatch(sendMessagesReceiveAction( response.data));
                 }
             })
             .catch(() =>
-                dispatch(authenticationError(true)))
+                dispatch(authenticationErrorAction(true)))
     };
 }

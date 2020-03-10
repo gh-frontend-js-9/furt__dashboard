@@ -1,5 +1,5 @@
 import axios from "axios";
-import {logout, authenticated, authenticationError} from "../authActions";
+import {logoutAction, authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
 
 export function axiosResetPass(url, email, password, confirmationPassword) {
     return (dispatch) => {
@@ -7,13 +7,13 @@ export function axiosResetPass(url, email, password, confirmationPassword) {
         axios.post(url, {email, password, confirmationPassword})
             .then((response) => {
                 if (response.statusText !== 'OK') {
-                    dispatch(logout(true));
+                    dispatch(logoutAction(true));
                     throw Error(response.statusText);
                 } else {
-                    dispatch(authenticated(true));
+                    dispatch(authenticatedAction(true));
                 }
             })
             .catch(() =>
-                dispatch(authenticationError(true)))
+                dispatch(authenticationErrorAction(true)))
     };
 }

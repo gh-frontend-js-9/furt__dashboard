@@ -1,21 +1,22 @@
 import axios from "axios";
-import {logout, authenticated, authenticationError, isLoading} from "../authActions";
-import '../../services/axiosConfig'
+import {isLoadingAction, authenticatedAction, authenticationErrorAction, logoutAction
+} from "../authActionsCreators";
+
 export function axiosSignUpPost(url, name, email, password) {
     return (dispatch) => {
-        dispatch(isLoading(true));
+        dispatch(isLoadingAction(true));
 
         axios.post(url, {name, email, password})
             .then((response) => {
                 if (response.statusText !== 'Created') {
-                    dispatch(logout(true));
+                    dispatch(logoutAction(true));
                     throw Error(response.statusText);
                 } else {
-                    dispatch(isLoading(false));
-                    dispatch(authenticated(true));
+                    dispatch(isLoadingAction(false));
+                    dispatch(authenticatedAction(true));
                 }
             })
             .catch(() =>
-                dispatch(authenticationError(true)))
+                dispatch(authenticationErrorAction(true)))
     };
 }

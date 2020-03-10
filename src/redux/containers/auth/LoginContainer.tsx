@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
-import '../../services/axiosConfig'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink, Redirect} from "react-router-dom";
-import {axiosLogInPost} from '../../actions/auth/axiosLoginPostThunkActions';
-import LogInGetContainer from "./LogInGetContainer";
+import {axiosLogInPost} from '../../actions/auth/loginPostThunkActions';
+import { getCurrentUserAction} from "../../actions/auth/loginGetThunkActions";
 
 interface IState {
     email?: string,
@@ -19,12 +18,13 @@ interface IProps {
     password?: string,
     isLoading?: boolean,
     authenticationError?: boolean,
+    getCurrentUserAction?: any,
     axiosLogInPost?: any,
     logout?: boolean,
     authenticated?: boolean;
 }
 
-class LogInPostContainer extends Component <IProps, IState> {
+class LogInContainer extends Component <IProps, IState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,7 +34,9 @@ class LogInPostContainer extends Component <IProps, IState> {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    componentDidMount() {
+        this.props.getCurrentUserAction(`${axios.defaults.baseURL}/api/users/`);
+    };
     handleChange(event: any) {
         const {name, value} = event.target;
         this.setState({
@@ -83,7 +85,6 @@ class LogInPostContainer extends Component <IProps, IState> {
                         {this.props.authenticationError ? <>Invalid email or password, try again</> : null}
                     </p>
                 </div>
-                {/*<LogInGetContainer/>*/}
             </div>
 
         );
@@ -101,11 +102,12 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
+        getCurrentUserAction: (url: string) => dispatch(getCurrentUserAction(url)),
         axiosLogInPost: (url: string, email: string, password: string) =>
             dispatch(axiosLogInPost(url, email, password))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInPostContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LogInContainer);
 
 

@@ -1,20 +1,17 @@
-import '../../services/axiosConfig'
+//import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import Loading from "../../views/projects/Loading";
-import {axiosGetAllUsers} from "../../actions/messages/axiosGetAllUsersThunkAction";
-import {axiosCreateThread} from "../../actions/messages/axiosCreateThreadThunkAction";
+import {axiosGetAllUsers} from "../../actions/messages/getAllUsersAction";
+import {axiosCreateThread} from "../../actions/messages/createThreadAction";
 
 interface IProps {
     allUsers?: any,
     createThread?: any,
     axiosGetAllUsers?: any,
     axiosCreateThread?: any,
-    authenticationError?: boolean,
     isLoading?: boolean,
-    logout?: boolean,
-    authenticated?: boolean,
 }
 
 class GetAllUsersContainer extends Component <IProps, {}> {
@@ -51,10 +48,7 @@ const mapStateToProps = (state: any) => {
     return {
         allUsers: state.allUsers,
         createThread: state.createThread,
-        logout: state.logout,
         isLoading: state.isLoading,
-        authenticated: state.authenticated,
-        authenticationError: state.authenticationError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {

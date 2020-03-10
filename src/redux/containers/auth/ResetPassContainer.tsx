@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
-import '../../services/axiosConfig'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink} from 'react-router-dom';
-import {axiosResetPass} from "../../actions/auth/axiosResetPassPostThunkActions";
+import {axiosResetPass} from "../../actions/auth/resetPassActions";
 import {ConfirmPassInput} from "../../views/auth/ConfirmPassInput";
 import {Redirect} from 'react-router-dom';
 

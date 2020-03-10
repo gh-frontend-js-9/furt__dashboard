@@ -3,7 +3,7 @@ import './App.css'
 import './index.css';
 
 import {BrowserRouter, Route} from "react-router-dom";
-import LoginPostContainer from "./redux/containers/auth/LoginPostContainer";
+import LoginPostContainer from "./redux/containers/auth/LoginContainer";
 import SignUpContainer from "./redux/containers/auth/SignUpContainer";
 import ResetPassContainer from "./redux/containers/auth/ResetPassContainer";
 import ProjectsList from "./redux/views/projects/ProjectsList";

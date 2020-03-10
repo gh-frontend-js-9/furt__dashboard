@@ -1,6 +1,6 @@
 import axios from "axios";
-import { authenticated, authenticationError} from "../authActions";
-import {createThreadResponse} from "./responseSuccessActions";
+import { authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
+import {createThreadReceiveAction} from "./messagesActionCreators";
 
 export function axiosCreateThread(url, userId) {
     return (dispatch) => {
@@ -14,11 +14,11 @@ export function axiosCreateThread(url, userId) {
                 if (response.statusText !== 'OK') {
                     throw Error(response.statusText);
                 } else {
-                    dispatch(authenticated(true));
-                    dispatch(createThreadResponse(response.data));
+                    dispatch(authenticatedAction(true));
+                    dispatch(createThreadReceiveAction(response.data));
                 }
             })
             .catch(() =>
-                dispatch(authenticationError(true)))
+                dispatch(authenticationErrorAction(true)))
     };
 }

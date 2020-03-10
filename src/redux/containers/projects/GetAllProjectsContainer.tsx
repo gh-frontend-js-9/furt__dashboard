@@ -1,9 +1,8 @@
-import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import '../../../assets/styles/messages/messages.css'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosGetAllProjects} from "../../actions/projects/axiosGetAllProjectsThunkActions";
+import {axiosGetAllProjects} from "../../actions/projects/getAllProjectsActions";
 import Loading from "../../views/projects/Loading";
 import CardCreatProject from "../../views/projects/CardCreatProject";
 
@@ -11,9 +10,6 @@ interface IProps {
     axiosGetAllProjects?: any,
     allProjects?: any,
     isLoading?: boolean,
-    authenticationError?: boolean,
-    logout?: boolean,
-    authenticated?: boolean,
 }
 
 class GetAllProjectsContainer extends Component <IProps, {}> {
@@ -37,10 +33,7 @@ class GetAllProjectsContainer extends Component <IProps, {}> {
 const mapStateToProps = (state: any) => {
     return {
         allProjects: state.allProjects,
-        logout: state.logout,
         isLoading: state.isLoading,
-        authenticated: state.authenticated,
-        authenticationError: state.authenticationError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {

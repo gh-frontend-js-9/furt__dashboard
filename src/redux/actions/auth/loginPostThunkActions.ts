@@ -1,9 +1,9 @@
 import axios from "axios";
-import {logout, authenticated, authenticationError, isLoading} from "../authActions";
+import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 
 export function axiosLogInPost(url, email, password) {
     return (dispatch) => {
-        dispatch(isLoading(true));
+        dispatch(isLoadingAction(true));
 
         axios.post(url, {email, password})
             .then((response) => {
@@ -11,16 +11,16 @@ export function axiosLogInPost(url, email, password) {
                 localStorage.setItem('myId', myId);
 
                 if (response.statusText !== 'OK') {
-                    dispatch(logout(true));
+                    dispatch(logoutAction(true));
                     throw Error(response.statusText);
                 } else {
                     let token = response.headers['x-auth-token'];
                     localStorage.setItem('token', token);
-                    dispatch(isLoading(false));
-                    dispatch(authenticated(true));
+                    dispatch(isLoadingAction(false));
+                    dispatch(authenticatedAction(true));
                 }
             })
             .catch(() =>
-                dispatch(authenticationError(true)))
+                dispatch(authenticationErrorAction(true)))
     };
 }

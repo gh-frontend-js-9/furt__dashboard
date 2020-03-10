@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import '../../services/axiosConfig'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
-import {axiosSendMessages} from "../../actions/messages/axiosSendMessageThunkActions";
+import {axiosSendMessages} from "../../actions/messages/sendMessageActions";
 
 interface IState {
     message?: any,
@@ -65,7 +64,6 @@ class SendMessagesContainer extends Component <IProps, IState> {
 const mapStateToProps = (state: any) => {
     return {
         sendMessage: state.sendMessage,
-        // authenticated: state.authenticated
     };
 };
 

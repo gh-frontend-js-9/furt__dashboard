@@ -1,7 +1,7 @@
 import axios from "axios";
-import {logout, authenticated, authenticationError} from "../authActions";
+import {logoutAction, authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
 
-export function axiosLogInGet(url) {
+export function getCurrentUserAction(url) {
     return (dispatch) => {
 
         if (localStorage.getItem('token')) {
@@ -10,14 +10,14 @@ export function axiosLogInGet(url) {
                     let myId = (response.data._id);
                     localStorage.setItem('myId', myId);
                     if (response.statusText !== 'OK') {
-                        dispatch(logout(true));
+                        dispatch(logoutAction(true));
                         throw Error(response.statusText);
                     } else {
-                        dispatch(authenticated(true));
+                        dispatch(authenticatedAction(true));
                     }
                 })
                 .catch(() =>
-                    dispatch(authenticationError(true)))
+                    dispatch(authenticationErrorAction(true)))
         }
     }
 }

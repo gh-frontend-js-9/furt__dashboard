@@ -1,4 +1,7 @@
-import {AUTHENTICATED, AUTHENTICATION_ERROR, LOGOUT, IS_LOADING} from '../constants/authConst'
+export const AUTHENTICATED = "AUTHENTICATED";
+export const AUTHENTICATION_ERROR = "AUTHENTICATION_ERROR";
+export const IS_LOADING = 'IS_LOADING';
+export const LOGOUT = 'LOGOUT';
 
 export function authenticated(state = false, action: any) {
     switch (action.type) {

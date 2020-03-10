@@ -1,8 +1,7 @@
-import '../../services/axiosConfig'
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosSignUpPost} from '../../actions/auth/axiosSignUpPostThunkActions';
+import {axiosSignUpPost} from '../../actions/auth/signUpActions';
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
