@@ -1,7 +1,15 @@
 import {combineReducers} from 'redux';
-import {logout, authenticated, authenticationError, isLoading} from "./authReducers";
+import {logout, authenticated, authenticationError, isLoading, currentUserId} from "./authReducers";
 import {allProjects} from "./projectsReducers";
-import {allMessages, allThreads, allUsers, createThread, sendMessage, threadId, userInfoById} from "./messageReducers";
+import {
+    allMessages,
+    allThreads,
+    allUsers,
+    createThread,
+    sendMessage,
+    threadId,
+    userInfoById
+} from "./messageReducers";
 
 const rootReducers = combineReducers({
     logout,
@@ -15,6 +23,7 @@ const rootReducers = combineReducers({
     allUsers,
     createThread,
     userInfoById,
-    threadId
+    threadId,
+    currentUserId
 });
 export default rootReducers;

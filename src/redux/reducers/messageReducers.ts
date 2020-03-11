@@ -72,5 +72,3 @@ export function threadId(state:any = [], action) {
             return state;
     }
 }
-
-

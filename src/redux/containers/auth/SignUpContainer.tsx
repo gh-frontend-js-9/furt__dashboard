@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosSignUpPost} from '../../actions/auth/signUpActions';
+import {signUpAction} from '../../actions/auth/signUpActions';
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
@@ -21,7 +21,7 @@ interface IProps {
     isLoading?: boolean,
     authenticationError?: boolean,
     authenticated?: boolean,
-    axiosSignUpPost?: any,
+    signUpAction?: any,
     logout?: boolean
 }
 
@@ -47,7 +47,7 @@ class SignUpContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {name, email, password} = this.state;
         event.preventDefault();
-        this.props.axiosSignUpPost(`${axios.defaults.baseURL}/api/users/`, name, email, password);
+        this.props.signUpAction(`${axios.defaults.baseURL}/api/users/`, name, email, password);
     };
 
     render() {
@@ -104,8 +104,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosSignUpPost: (url: string, name: string, email: string, password: string) =>
-            dispatch(axiosSignUpPost(url, name, email, password))
+        signUpAction: (url: string, name: string, email: string, password: string) =>
+            dispatch(signUpAction(url, name, email, password))
     };
 };
 

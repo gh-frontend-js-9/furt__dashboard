@@ -1,5 +1,10 @@
 import axios from "axios";
-import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
+import {
+    logoutAction,
+    authenticatedAction,
+    authenticationErrorAction,
+    isLoadingAction,
+} from "../authActionsCreators";
 import { getAllThreadsReceiveAction} from "./messagesActionCreators";
 
 export function getAllThreadsAction(url) {

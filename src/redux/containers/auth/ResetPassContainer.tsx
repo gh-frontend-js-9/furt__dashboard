@@ -5,7 +5,7 @@ import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink} from 'react-router-dom';
-import {axiosResetPass} from "../../actions/auth/resetPassActions";
+import {resetPassAction} from "../../actions/auth/resetPassActions";
 import {ConfirmPassInput} from "../../views/auth/ConfirmPassInput";
 import {Redirect} from 'react-router-dom';
 
@@ -19,7 +19,7 @@ interface IProps {
     email?: string,
     password?: string,
     authenticationError?: boolean,
-    axiosResetPass?: any,
+    resetPassAction?: any,
     logout?: boolean,
     authenticated?: boolean
 
@@ -47,7 +47,7 @@ class ResetPassContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {email, password, confirmationPassword} = this.state;
         event.preventDefault();
-        this.props.axiosResetPass(`${axios.defaults.baseURL}/api/users/reset_password`, email, password, confirmationPassword);
+        this.props.resetPassAction(`${axios.defaults.baseURL}/api/users/reset_password`, email, password, confirmationPassword);
     };
 
     render() {
@@ -98,8 +98,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosResetPass: (url: string, email: string, password: string, confirmationPassword: string) =>
-            dispatch(axiosResetPass(url, email, password, confirmationPassword))
+        resetPassAction: (url: string, email: string, password: string, confirmationPassword: string) =>
+            dispatch( resetPassAction(url, email, password, confirmationPassword))
     };
 };
 

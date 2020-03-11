@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import '../../services/axiosConfig'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink, Redirect} from "react-router-dom";
-import {axiosLogInPost} from '../../actions/auth/loginActions';
+import {logInAction} from '../../actions/auth/loginActions';
 import { getCurrentUserAction} from "../../actions/auth/getCurrentUserAction";
+import store from "../../store/storeConfig";
 
 interface IState {
     email?: string,
@@ -19,7 +21,7 @@ interface IProps {
     isLoading?: boolean,
     authenticationError?: boolean,
     getCurrentUserAction?: any,
-    axiosLogInPost?: any,
+    logInAction?: any,
     logout?: boolean,
     authenticated?: boolean;
 }
@@ -34,9 +36,12 @@ class LogInContainer extends Component <IProps, IState> {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     componentDidMount() {
         this.props.getCurrentUserAction(`${axios.defaults.baseURL}/api/users/`);
+        console.log(store.getState().currentUserId);
     };
+
     handleChange(event: any) {
         const {name, value} = event.target;
         this.setState({
@@ -47,7 +52,7 @@ class LogInContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {email, password} = this.state;
         event.preventDefault();
-        this.props.axiosLogInPost(`${axios.defaults.baseURL}/api/users/login`, email, password);
+        this.props.logInAction(`${axios.defaults.baseURL}/api/users/login`, email, password);
     };
 
     render() {
@@ -103,8 +108,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         getCurrentUserAction: (url: string) => dispatch(getCurrentUserAction(url)),
-        axiosLogInPost: (url: string, email: string, password: string) =>
-            dispatch(axiosLogInPost(url, email, password))
+        logInAction: (url: string, email: string, password: string) =>
+            dispatch(logInAction(url, email, password))
     };
 };
 

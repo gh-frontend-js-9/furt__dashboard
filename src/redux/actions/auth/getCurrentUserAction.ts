@@ -1,5 +1,11 @@
 import axios from "axios";
-import {logoutAction, authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
+import '../../services/axiosConfig'
+import {
+    logoutAction,
+    authenticatedAction,
+    authenticationErrorAction,
+    getCurrentUserIdAction
+} from "../authActionsCreators";
 
 export function getCurrentUserAction(url) {
     return (dispatch) => {
@@ -7,8 +13,9 @@ export function getCurrentUserAction(url) {
         if (localStorage.getItem('token')) {
             axios.get(url)
                 .then((response) => {
-                    let myId = (response.data._id);
-                    localStorage.setItem('myId', myId);
+                    let currentUserId = (response.data._id);
+
+                    dispatch(getCurrentUserIdAction(currentUserId));
                     if (response.statusText !== 'OK') {
                         dispatch(logoutAction(true));
                         throw Error(response.statusText);

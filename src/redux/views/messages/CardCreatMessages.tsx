@@ -1,10 +1,11 @@
 import React from "react"
+import store from "../../store/storeConfig";
 
 const CardCreatMessages = (props: any) => {
 
     let renderMessageCard = () => {
         let locationMessagesCard;
-        props.user._id === localStorage.getItem('myId')
+        props.user._id === store.getState().currentUserId
             ? locationMessagesCard = { flexDirection: "row" }
             : locationMessagesCard = { flexDirection: "row-reverse" };
 

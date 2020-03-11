@@ -20,7 +20,7 @@ class GetAllMessagesContainer extends Component <IProps, {}> {
             <CardCreatMessages {...message} key={message._id}/>);
         return (
             <>
-                {this.props.isLoading ? <Loading/> : <>{getAllMessage} {sendMessage} </>}
+                {this.props.isLoading ? <Loading/> : <> {getAllMessage} {sendMessage} </>}
             </>
         )
     }

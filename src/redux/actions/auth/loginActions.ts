@@ -1,15 +1,22 @@
-import axios from "axios";
-import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 
-export function axiosLogInPost(url, email, password) {
+import axios from "axios";
+import {
+    logoutAction,
+    authenticatedAction,
+    authenticationErrorAction,
+    isLoadingAction,
+    getCurrentUserIdAction
+} from "../authActionsCreators";
+
+export function logInAction(url, email, password) {
+
     return (dispatch) => {
-        dispatch(isLoadingAction(true));
+        dispatch(isLoadingAction(true))
 
         axios.post(url, {email, password})
             .then((response) => {
-                let myId = (response.data._id);
-                localStorage.setItem('myId', myId);
-
+                let currentUserId = (response.data._id);
+                dispatch(getCurrentUserIdAction(currentUserId));
                 if (response.statusText !== 'OK') {
                     dispatch(logoutAction(true));
                     throw Error(response.statusText);

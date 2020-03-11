@@ -1,7 +1,7 @@
 import axios from "axios";
 import {logoutAction, authenticatedAction, authenticationErrorAction} from "../authActionsCreators";
 
-export function axiosResetPass(url, email, password, confirmationPassword) {
+export function resetPassAction(url, email, password, confirmationPassword) {
     return (dispatch) => {
 
         axios.post(url, {email, password, confirmationPassword})

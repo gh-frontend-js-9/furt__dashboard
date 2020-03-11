@@ -2,7 +2,7 @@ import axios from "axios";
 import {isLoadingAction, authenticatedAction, authenticationErrorAction, logoutAction
 } from "../authActionsCreators";
 
-export function axiosSignUpPost(url, name, email, password) {
+export function signUpAction(url, name, email, password) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 

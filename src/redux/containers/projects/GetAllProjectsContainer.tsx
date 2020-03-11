@@ -2,20 +2,19 @@ import React, {Component} from 'react'
 import '../../../assets/styles/messages/messages.css'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {axiosGetAllProjects} from "../../actions/projects/getAllProjectsActions";
+import {getAllProjectsAction} from "../../actions/projects/getAllProjectsActions";
 import Loading from "../../views/projects/Loading";
 import CardCreatProject from "../../views/projects/CardCreatProject";
 
 interface IProps {
-    axiosGetAllProjects?: any,
+    getAllProjectsAction?: any,
     allProjects?: any,
     isLoading?: boolean,
 }
 
 class GetAllProjectsContainer extends Component <IProps, {}> {
     componentDidMount() {
-        this.props.axiosGetAllProjects(`${axios.defaults.baseURL}/api/projects/`);
-
+        this.props.getAllProjectsAction(`${axios.defaults.baseURL}/api/projects/`);
     };
 
     render() {
@@ -38,7 +37,7 @@ const mapStateToProps = (state: any) => {
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        axiosGetAllProjects: (url: string) => dispatch(axiosGetAllProjects(url))
+        getAllProjectsAction: (url: string) => dispatch(getAllProjectsAction(url))
     };
 };
 
