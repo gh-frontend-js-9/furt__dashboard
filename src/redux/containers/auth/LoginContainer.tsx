@@ -86,7 +86,7 @@ class LogInContainer extends Component <IProps, IState> {
                         {this.props.isLoading ? <>Loading...</> : null}
                     </p>
                     <p>
-                        {this.props.authenticated ? (<Redirect to='/projects/'/>) : null}
+                        {this.props.authenticated ? (<Redirect to='/threads'/>) : null}
                         {this.props.authenticationError ? <>Invalid email or password, try again</> : null}
                     </p>
                 </div>

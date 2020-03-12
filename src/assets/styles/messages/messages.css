@@ -95,9 +95,6 @@
 .messages-container__messages {
     width: 50%;
     max-height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     overflow-y: scroll;
     overflow-x: hidden;
 }

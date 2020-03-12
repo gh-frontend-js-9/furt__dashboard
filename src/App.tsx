@@ -6,9 +6,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import LoginPostContainer from "./redux/containers/auth/LoginContainer";
 import SignUpContainer from "./redux/containers/auth/SignUpContainer";
 import ResetPassContainer from "./redux/containers/auth/ResetPassContainer";
-import ProjectsList from "./redux/views/projects/ProjectsList";
-import MessagesPage from "./redux/views/messages/MessagesPage";
-
+import ApplicationComponent from "./redux/views/common/ApplicationComponent";
 
 const App: React.FC = () => {
     return (
@@ -16,8 +14,8 @@ const App: React.FC = () => {
             <Route path='/login' component={LoginPostContainer}/>
             <Route exact path='/' component={SignUpContainer}/>
             <Route path='/reset_password' component={ResetPassContainer}/>
-            <Route path='/projects/' component={ProjectsList}/>
-            <Route path='/threads' component={MessagesPage}/>
+
+            <Route path='/threads' component={ApplicationComponent}/>
         </BrowserRouter>
    )};
 

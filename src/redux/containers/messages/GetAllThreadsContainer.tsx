@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import '../../services/axiosConfig'
 import {connect} from 'react-redux'
 import {getAllThreadsAction} from "../../actions/messages/getAllThreadsActions";
 import Loading from "../../views/projects/Loading";
@@ -22,7 +21,7 @@ interface IProps {
 
 class GetAllThreadsContainer extends Component <IProps, {}> {
     componentDidMount() {
-        this.props.getAllThreadsAction(`${axios.defaults.baseURL}/api/threads`);
+        this.props.getAllThreadsAction();
         this.props.getCurrentUserAction(`${axios.defaults.baseURL}/api/users/`);
     };
 
@@ -30,7 +29,7 @@ class GetAllThreadsContainer extends Component <IProps, {}> {
         this.props.getAllMessagesAction(`${axios.defaults.baseURL}/api/threads/messages/${threadId}`)
         this.props.getThreadIdAction(threadId);
 
-         firstUserId === store.getState().currentUserId
+        firstUserId === store.getState().currentUserId
             ? this.props.getUserByIdAction(`${axios.defaults.baseURL}/api/users/${secondUserId}`)
             : this.props.getUserByIdAction(`${axios.defaults.baseURL}/api/users/${firstUserId}`)
     }
@@ -72,7 +71,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         getCurrentUserAction: (url: string) => dispatch(getCurrentUserAction(url)),
-        getAllThreadsAction: (url: string) => dispatch(getAllThreadsAction(url)),
+        getAllThreadsAction: () => dispatch(getAllThreadsAction()),
         getAllMessagesAction: (url: string) => dispatch(getAllMessagesAction(url)),
         getUserByIdAction: (url: string) => dispatch(getUserByIdAction(url)),
         getThreadIdAction: (threadId: string) => dispatch(getThreadIdAction(threadId))

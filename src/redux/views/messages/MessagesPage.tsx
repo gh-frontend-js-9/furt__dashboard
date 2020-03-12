@@ -1,39 +1,26 @@
 import React from 'react';
-import {Header} from "../common/Header";
-import {Sidebar} from "../common/Sidebar";
-import {SortRow} from "../projects/Sort";
 import GetAllThreadsContainer from "../../containers/messages/GetAllThreadsContainer";
-import {Footer} from "./Footer";
 import GetAllMessagesContainer from "../../containers/messages/GetAllMessagesContainer";
 import GetUserByIdContainer from "../../containers/messages/GetUserByIdContainer";
 
 const MessagesPage: React.FC = () => {
     return (
         <>
+            <div className='messages-container'>
+                <div className='messages-container__threads'>
+                    <GetAllThreadsContainer/>
+                </div>
 
-            <Header/>
-            <div className='main'>
-                <Sidebar/>
-                <div className='main__container'>
-                    <SortRow/>
-                    <div className='messages-container'>
+                <div className=' messages-container__messages'>
+                    <GetAllMessagesContainer/>
+                </div>
 
-                        <div className='messages-container__threads'>
-                            <GetAllThreadsContainer/>
-                        </div>
+                <div className='messages-container__user-info'>
+                    <GetUserByIdContainer/>
 
-                        <div className=' messages-container__messages'>
-                            <GetAllMessagesContainer/>
-                        </div>
-
-                        <div className='messages-container__user-info'>
-                            <GetUserByIdContainer/>
-
-                        </div>
-                    </div>
                 </div>
             </div>
-            <Footer/>
+
         </>
     )
 };

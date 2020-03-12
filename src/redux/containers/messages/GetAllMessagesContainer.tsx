@@ -12,15 +12,15 @@ interface IProps {
 class GetAllMessagesContainer extends Component <IProps, {}> {
 
     render() {
-        let sendMessage = this.props.sendMessage.length !== 0
-            ? <CardCreatMessages {...this.props.sendMessage}/>
-            : null;
+        // let sendMessage = this.props.sendMessage.length !== 0
+        //     ? <CardCreatMessages {...this.props.sendMessage}/>
+        //     : null;
 
         let getAllMessage = this.props.allMessages.map((message: any) =>
             <CardCreatMessages {...message} key={message._id}/>);
         return (
             <>
-                {this.props.isLoading ? <Loading/> : <> {getAllMessage} {sendMessage} </>}
+                {this.props.isLoading ? <Loading/> : <> {getAllMessage} </>}
             </>
         )
     }

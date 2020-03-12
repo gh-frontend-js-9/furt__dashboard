@@ -58,6 +58,7 @@ class SendMessagesContainer extends Component <IProps, IState> {
                         Send
                     </Button>
                 </form>
+                {/*<CardCreatMessages {...this.props.sendMessage}/>*/}
             </div>
         );
     }

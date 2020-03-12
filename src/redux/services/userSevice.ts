@@ -1,11 +1,16 @@
 import axios from "axios";
+import {Component} from "react";
 
-export class UserService {
-     get usersUrl  () {
-        return 'api/users/login'
+interface IProps {
+    getAllThreads?: any
+}
+
+export class MessagesService extends Component  <IProps, {}> {
+    static get threadsUrl() {
+        return '/api/threads'
     }
-     login(email: any, password: any){
-        axios.post(axios.defaults.baseURL + this.usersUrl, {email, password})
-            .then( )
+
+    static getAllThreads() {
+        return axios.get(axios.defaults.baseURL + this.threadsUrl);
     }
 }
