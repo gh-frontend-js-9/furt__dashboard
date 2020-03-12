@@ -1,30 +1,29 @@
-import axios from "axios";
 import '../../services/axiosConfig'
 import {
-    logoutAction,
     authenticatedAction,
     authenticationErrorAction,
-    getCurrentUserIdAction
+    getCurrentUserIdAction, isLoadingAction
 } from "../authActionsCreators";
+import {UserService} from "../../services/userService";
 
-export function getCurrentUserAction(url) {
+export function getCurrentUserAction() {
     return (dispatch) => {
 
         if (localStorage.getItem('token')) {
-            axios.get(url)
+            UserService.currentUser()
                 .then((response) => {
                     let currentUserId = (response.data._id);
-
+                    console.log(currentUserId)
+                    console.log(response)
                     dispatch(getCurrentUserIdAction(currentUserId));
-                    if (response.statusText !== 'OK') {
-                        dispatch(logoutAction(true));
-                        throw Error(response.statusText);
-                    } else {
-                        dispatch(authenticatedAction(true));
-                    }
+
+                    let token = response.headers['x-auth-token'];
+                    localStorage.setItem('token', token);
+                    dispatch(isLoadingAction(false));
+                    dispatch(authenticatedAction(true));
                 })
-                .catch(() =>
-                    dispatch(authenticationErrorAction(true)))
+                .catch(error =>
+                    dispatch(authenticationErrorAction(error.response)))
         }
     }
 }

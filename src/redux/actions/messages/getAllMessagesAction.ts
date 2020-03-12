@@ -1,24 +1,18 @@
-import axios from "axios";
-import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
-import { getAllMessagesReceiveAction} from "./messagesActionCreators";
+import {authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
+import {getAllMessagesReceiveAction} from "./messagesActionCreators";
+import {MessagesService} from "../../services/messagesService";
 
-export function getAllMessagesAction(url) {
+export function getAllMessagesAction(threadId) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 
-        axios.get(url)
+        MessagesService.getAllMessages(threadId)
             .then((response) => {
-                if (response.statusText !== 'OK') {
-                    dispatch(logoutAction(true));
-                    throw Error(response.statusText);
-                } else {
-                    dispatch(isLoadingAction(false));
-                    dispatch(authenticatedAction(true));
-                    dispatch(getAllMessagesReceiveAction(response.data));
-                }
+                dispatch(isLoadingAction(false));
+                dispatch(authenticatedAction(true));
+                dispatch(getAllMessagesReceiveAction(response.data));
             })
-            .catch(() =>
-                dispatch(authenticationErrorAction(true)))
-
+            .catch(error =>
+                dispatch(authenticationErrorAction(error.response)))
     }
 }

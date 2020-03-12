@@ -1,23 +1,19 @@
-import axios from "axios";
-import {logoutAction, authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
+import { authenticatedAction, authenticationErrorAction, isLoadingAction} from "../authActionsCreators";
 import { getUserByIdReceiveAction} from "./messagesActionCreators";
+import {MessagesService} from "../../services/messagesService";
 
-export function getUserByIdAction(url) {
+export function getUserByIdAction(userById) {
     return (dispatch) => {
         dispatch(isLoadingAction(true));
 
-        axios.get(url)
+       MessagesService.getUserById(userById)
             .then((response) => {
-                if (response.statusText !== 'OK') {
-                    dispatch(logoutAction(true));
-                    throw Error(response.statusText);
-                } else {
                     dispatch(isLoadingAction(false));
                     dispatch(authenticatedAction(true));
                     dispatch(getUserByIdReceiveAction(response.data));
-                }
+
             })
-            .catch(() =>
-                dispatch(authenticationErrorAction(true)))
+           .catch(error =>
+               dispatch(authenticationErrorAction(error.response)))
     }
 }

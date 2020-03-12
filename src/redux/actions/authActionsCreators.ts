@@ -15,10 +15,10 @@ export function authenticatedAction(bool) {
     };
 }
 
-export function authenticationErrorAction(bool) {
+export function authenticationErrorAction(error) {
     return {
         type: AUTHENTICATION_ERROR,
-        authenticationError: bool
+        authenticationError:error
     };
 }
 

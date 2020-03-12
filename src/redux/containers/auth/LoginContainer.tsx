@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
-import axios from 'axios'
-import '../../services/axiosConfig'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
 import {EmailInput} from "../../views/auth/EmailInput";
 import {PasswordInput} from "../../views/auth/PasswordInput";
 import {NavLink, Redirect} from "react-router-dom";
 import {logInAction} from '../../actions/auth/loginActions';
-import { getCurrentUserAction} from "../../actions/auth/getCurrentUserAction";
+import {getCurrentUserAction} from "../../actions/auth/getCurrentUserAction";
 import store from "../../store/storeConfig";
 
 interface IState {
@@ -38,7 +36,7 @@ class LogInContainer extends Component <IProps, IState> {
     }
 
     componentDidMount() {
-        this.props.getCurrentUserAction(`${axios.defaults.baseURL}/api/users/`);
+        this.props.getCurrentUserAction();
         console.log(store.getState().currentUserId);
     };
 
@@ -52,7 +50,7 @@ class LogInContainer extends Component <IProps, IState> {
     handleSubmit(event: any) {
         const {email, password} = this.state;
         event.preventDefault();
-        this.props.logInAction(`${axios.defaults.baseURL}/api/users/login`, email, password);
+        this.props.logInAction(email, password);
     };
 
     render() {
@@ -107,9 +105,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getCurrentUserAction: (url: string) => dispatch(getCurrentUserAction(url)),
-        logInAction: (url: string, email: string, password: string) =>
-            dispatch(logInAction(url, email, password))
+        getCurrentUserAction:() => dispatch(getCurrentUserAction()),
+        logInAction: (email: string, password: string) => dispatch(logInAction(email, password))
     };
 };
 

@@ -4,7 +4,7 @@ import {
     isLoadingAction,
 } from "../authActionsCreators";
 import {getAllThreadsReceiveAction} from "./messagesActionCreators";
-import {MessagesService} from "../../services/userSevice";
+import {MessagesService} from "../../services/messagesService";
 
 export function getAllThreadsAction() {
     return (dispatch) => {
@@ -12,12 +12,13 @@ export function getAllThreadsAction() {
 
         MessagesService.getAllThreads()
             .then((response: any) => {
+
                 dispatch(isLoadingAction(false));
                 dispatch(authenticatedAction(true));
                 dispatch(getAllThreadsReceiveAction(response.data));
             })
-            .catch(() =>
-                dispatch(authenticationErrorAction(true)))
+            .catch(error =>
+               dispatch(authenticationErrorAction(error.response)))
     }
 }
 

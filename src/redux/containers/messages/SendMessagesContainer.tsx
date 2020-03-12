@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {Button} from "../../views/common/Button";
 import {sendMessagesAction} from "../../actions/messages/sendMessageActions";
-import CardCreatMessages from "../../views/messages/CardCreatMessages";
+//import CardCreatMessages from "../../views/messages/CardCreatMessages";
 
 interface IState {
     message?: any,
