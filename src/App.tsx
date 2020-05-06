@@ -1,23 +1,37 @@
 import React from 'react';
 import './App.css'
-import './index.css';
-
-import {BrowserRouter, Route} from "react-router-dom";
-import LoginPostContainer from "./redux/containers/auth/LoginContainer";
-import SignUpContainer from "./redux/containers/auth/SignUpContainer";
-import ResetPassContainer from "./redux/containers/auth/ResetPassContainer";
-import ApplicationComponent from "./redux/views/common/ApplicationComponent";
+import {BrowserRouter, Route} from 'react-router-dom';
+import SignUpPage from './pages/SignUpPage';
+import ResetPassPage from './pages/ResetPassPage';
+import LoginPage from './pages/LoginPage';
+import {Header} from './components/common/Header';
+import {Sidebar} from './components/common/Sidebar';
+import {SortRow} from './components/projects/Sort';
+import ProjectsList from './components/projects/ProjectsList';
+import MessagesPage from './components/messages/MessagesPage';
+import {MessagesContainer} from './components/messages/MessagesContainer';
 
 const App: React.FC = () => {
+
     return (
         <BrowserRouter>
-            <Route path='/login' component={LoginPostContainer}/>
-            <Route exact path='/' component={SignUpContainer}/>
-            <Route path='/reset_password' component={ResetPassContainer}/>
+            <Route path='/login' component={LoginPage}/>
+            <Route exact path='/' component={SignUpPage}/>
+            <Route path='/reset_password' component={ResetPassPage}/>
 
-            <Route path='/threads' component={ApplicationComponent}/>
+            <Header/>
+            <div className='main'>
+                <Sidebar/>
+                <div className='main__container'>
+                    <SortRow/>
+
+                    <Route path='/projects' component={ProjectsList}/>
+                    <Route path='/threads' component={MessagesContainer}/>
+                </div>
+            </div>
         </BrowserRouter>
-   )};
+    )
+};
 
 export default App;
 

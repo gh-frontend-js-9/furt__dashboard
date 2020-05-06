@@ -2,8 +2,7 @@ import {
     authenticatedAction,
     authenticationErrorAction,
     isLoadingAction,
-    getCurrentUserIdAction
-} from "../authActionsCreators";
+} from '../authActionsCreators';
 import {UserService} from "../../services/userService";
 import '../../services/axiosConfig'
 
@@ -15,7 +14,7 @@ export function logInAction(email, password) {
         UserService.login(email, password)
             .then((response) => {
                 let currentUserId = (response.data._id);
-                dispatch(getCurrentUserIdAction(currentUserId));
+                localStorage.setItem('currentId', currentUserId);
 
                 let token = response.headers['x-auth-token'];
                 localStorage.setItem('token', token);

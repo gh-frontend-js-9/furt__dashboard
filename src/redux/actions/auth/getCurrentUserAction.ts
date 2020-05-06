@@ -1,8 +1,7 @@
 import '../../services/axiosConfig'
 import {
     authenticatedAction,
-    authenticationErrorAction,
-    getCurrentUserIdAction, isLoadingAction
+    authenticationErrorAction, isLoadingAction
 } from "../authActionsCreators";
 import {UserService} from "../../services/userService";
 
@@ -13,9 +12,7 @@ export function getCurrentUserAction() {
             UserService.currentUser()
                 .then((response) => {
                     let currentUserId = (response.data._id);
-                    console.log(currentUserId)
-                    console.log(response)
-                    dispatch(getCurrentUserIdAction(currentUserId));
+                    localStorage.setItem('currentUserId', currentUserId);
 
                     let token = response.headers['x-auth-token'];
                     localStorage.setItem('token', token);

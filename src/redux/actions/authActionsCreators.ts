@@ -28,9 +28,3 @@ export function isLoadingAction(bool) {
         isLoading: bool
     };
 }
-export function getCurrentUserIdAction(currentUserId) {
-    return {
-        type: GET_CURRENT_USER_ID,
-        payload: currentUserId
-    };
-}
